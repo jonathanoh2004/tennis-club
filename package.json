@@ -1,0 +1,10 @@
+{
+  "name": "tennis-club-backend",
+  "version": "1.0.0",
+  "main": "serverless.yml",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "serverless deploy"
+  },
+  "dependencies": {}
+}

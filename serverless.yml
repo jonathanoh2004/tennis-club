@@ -1,0 +1,153 @@
+service: tennis-club-tracker
+frameworkVersion: "4"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-west-2
+  stage: dev
+  environment:
+    CLUBS_TABLE: ${self:service}-${sls:stage}-Clubs
+    MATCHES_TABLE: ${self:service}-${sls:stage}-Matches
+    USERS_TABLE: ${self:service}-${sls:stage}-Users
+    CONNECTIONS_TABLE: ${self:service}-${sls:stage}-Connections
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:GetItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - dynamodb:Query
+            - dynamodb:Scan
+          Resource:
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CLUBS_TABLE}
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.USERS_TABLE}
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}/index/byClub
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}/index/byClub
+        - Effect: Allow
+          Action:
+            - execute-api:ManageConnections
+          Resource:
+            - arn:aws:execute-api:${aws:region}:${aws:accountId}:*/${sls:stage}/@connections/*
+
+package:
+  individually: true
+  patterns:
+    - "!**/*"
+    - "backend/**"
+
+functions:
+  getClubs:
+    handler: backend/handlers/clubs.get
+    events:
+      - http:
+          path: clubs
+          method: get
+          cors: true
+
+  createMatch:
+    handler: backend/handlers/matches.create
+    events:
+      - http:
+          path: matches
+          method: post
+          cors: true
+
+  listMatches:
+    handler: backend/handlers/matches.list
+    events:
+      - http:
+          path: matches
+          method: get
+          cors: true
+
+  wsConnect:
+    handler: backend/handlers/websocket.connect
+    events:
+      - websocket:
+          route: $connect
+
+  wsDisconnect:
+    handler: backend/handlers/websocket.disconnect
+    events:
+      - websocket:
+          route: $disconnect
+
+  wsDefault:
+    handler: backend/handlers/websocket.onMessage
+    events:
+      - websocket:
+          route: $default
+
+resources:
+  Resources:
+    ClubsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.CLUBS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: clubId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: clubId
+            KeyType: HASH
+
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.USERS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+
+    MatchesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.MATCHES_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: matchId
+            AttributeType: S
+          - AttributeName: clubId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: matchId
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: byClub
+            KeySchema:
+              - AttributeName: clubId
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+
+    ConnectionsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.CONNECTIONS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: connectionId
+            AttributeType: S
+          - AttributeName: clubId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: connectionId
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: byClub
+            KeySchema:
+              - AttributeName: clubId
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
