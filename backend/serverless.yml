@@ -38,20 +38,33 @@ provider:
 package:
   individually: true
   patterns:
-    - "!**/*"
-    - "backend/**"
+    - "handlers/**"
+    - "utils/**"
+    - "node_modules/**"
+    - "package.json"
+    - "package-lock.json"
+
 
 functions:
+  # ---------- REST ----------
   getClubs:
-    handler: backend/handlers/clubs.get
+    handler: handlers/clubs.get
     events:
       - http:
           path: clubs
           method: get
           cors: true
 
+  createClub:
+    handler: handlers/clubs.create
+    events:
+      - http:
+          path: clubs
+          method: post
+          cors: true
+
   createMatch:
-    handler: backend/handlers/matches.create
+    handler: handlers/matches.create
     events:
       - http:
           path: matches
@@ -59,27 +72,28 @@ functions:
           cors: true
 
   listMatches:
-    handler: backend/handlers/matches.list
+    handler: handlers/matches.list
     events:
       - http:
           path: matches
           method: get
           cors: true
 
+  # ---------- WebSocket ----------
   wsConnect:
-    handler: backend/handlers/websocket.connect
+    handler: handlers/websocket.connect
     events:
       - websocket:
           route: $connect
 
   wsDisconnect:
-    handler: backend/handlers/websocket.disconnect
+    handler: handlers/websocket.disconnect
     events:
       - websocket:
           route: $disconnect
 
   wsDefault:
-    handler: backend/handlers/websocket.onMessage
+    handler: handlers/websocket.onMessage
     events:
       - websocket:
           route: $default
