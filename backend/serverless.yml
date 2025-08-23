@@ -62,7 +62,7 @@ functions:
           path: clubs
           method: post
           cors: true
-
+          
   createMatch:
     handler: handlers/matches.create
     events:
@@ -78,6 +78,31 @@ functions:
           path: matches
           method: get
           cors: true
+
+  getMatch:
+    handler: handlers/matches.get
+    events:
+      - http:
+          path: matches/{matchId}
+          method: get
+          cors: true
+
+  updateScore:
+    handler: handlers/matches.score
+    events:
+      - http:
+          path: matches/{matchId}/score
+          method: post
+          cors: true
+
+  finalizeMatch:
+    handler: handlers/matches.finalize
+    events:
+      - http:
+          path: matches/{matchId}/finalize
+          method: post
+          cors: true
+
 
   # ---------- WebSocket ----------
   wsConnect:

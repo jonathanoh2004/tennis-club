@@ -76,6 +76,24 @@
               "LogGroupName": "/aws/lambda/tennis-club-tracker-dev-listMatches"
             }
           },
+          "GetMatchLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/tennis-club-tracker-dev-getMatch"
+            }
+          },
+          "UpdateScoreLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/tennis-club-tracker-dev-updateScore"
+            }
+          },
+          "FinalizeMatchLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/tennis-club-tracker-dev-finalizeMatch"
+            }
+          },
           "WsConnectLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
@@ -194,7 +212,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z/getClubs.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/getClubs.zip"
               },
               "Handler": "handlers/clubs.get",
               "Runtime": "nodejs20.x",
@@ -225,7 +243,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z/createClub.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/createClub.zip"
               },
               "Handler": "handlers/clubs.create",
               "Runtime": "nodejs20.x",
@@ -256,7 +274,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z/createMatch.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/createMatch.zip"
               },
               "Handler": "handlers/matches.create",
               "Runtime": "nodejs20.x",
@@ -287,7 +305,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z/listMatches.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/listMatches.zip"
               },
               "Handler": "handlers/matches.list",
               "Runtime": "nodejs20.x",
@@ -313,12 +331,105 @@
               "ListMatchesLogGroup"
             ]
           },
+          "GetMatchLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/getMatch.zip"
+              },
+              "Handler": "handlers/matches.get",
+              "Runtime": "nodejs20.x",
+              "FunctionName": "tennis-club-tracker-dev-getMatch",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "CLUBS_TABLE": "tennis-club-tracker-dev-Clubs",
+                  "MATCHES_TABLE": "tennis-club-tracker-dev-Matches",
+                  "USERS_TABLE": "tennis-club-tracker-dev-Users",
+                  "CONNECTIONS_TABLE": "tennis-club-tracker-dev-Connections"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "GetMatchLogGroup"
+            ]
+          },
+          "UpdateScoreLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/updateScore.zip"
+              },
+              "Handler": "handlers/matches.score",
+              "Runtime": "nodejs20.x",
+              "FunctionName": "tennis-club-tracker-dev-updateScore",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "CLUBS_TABLE": "tennis-club-tracker-dev-Clubs",
+                  "MATCHES_TABLE": "tennis-club-tracker-dev-Matches",
+                  "USERS_TABLE": "tennis-club-tracker-dev-Users",
+                  "CONNECTIONS_TABLE": "tennis-club-tracker-dev-Connections"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "UpdateScoreLogGroup"
+            ]
+          },
+          "FinalizeMatchLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/finalizeMatch.zip"
+              },
+              "Handler": "handlers/matches.finalize",
+              "Runtime": "nodejs20.x",
+              "FunctionName": "tennis-club-tracker-dev-finalizeMatch",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "CLUBS_TABLE": "tennis-club-tracker-dev-Clubs",
+                  "MATCHES_TABLE": "tennis-club-tracker-dev-Matches",
+                  "USERS_TABLE": "tennis-club-tracker-dev-Users",
+                  "CONNECTIONS_TABLE": "tennis-club-tracker-dev-Connections"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "FinalizeMatchLogGroup"
+            ]
+          },
           "WsConnectLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z/wsConnect.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/wsConnect.zip"
               },
               "Handler": "handlers/websocket.connect",
               "Runtime": "nodejs20.x",
@@ -349,7 +460,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z/wsDisconnect.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/wsDisconnect.zip"
               },
               "Handler": "handlers/websocket.disconnect",
               "Runtime": "nodejs20.x",
@@ -380,7 +491,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z/wsDefault.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z/wsDefault.zip"
               },
               "Handler": "handlers/websocket.onMessage",
               "Runtime": "nodejs20.x",
@@ -406,74 +517,104 @@
               "WsDefaultLogGroup"
             ]
           },
-          "GetClubsLambdaVersion4LUHigzcb0GCnBtnePuUD7B48WMIKvMg0FuJI0r0ya0": {
+          "GetClubsLambdaVersionzTGMKUeEL7KOEVlJWv62ydOZnFyNSQy5bBMh3g5jiMY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetClubsLambdaFunction"
               },
-              "CodeSha256": "33uJyJGNa70ZF2TJ8YdRxL9HlIDST1sgbizuNLHuV6E="
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
             }
           },
-          "CreateClubLambdaVersionp23V1duMvxdx65uE6aOI7PZrt8kNfAP0DZ50xWQ8": {
+          "GetMatchLambdaVersionQqDM5x4rpYbRWYcfiv7WiIaY0vQoer5KwYP88P0P4ro": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "CreateClubLambdaFunction"
+                "Ref": "GetMatchLambdaFunction"
               },
-              "CodeSha256": "33uJyJGNa70ZF2TJ8YdRxL9HlIDST1sgbizuNLHuV6E="
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
             }
           },
-          "CreateMatchLambdaVersioncufce9XGFzzt9UOvaWnMRoU9gcRlX16IGRHBeuKZuo": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "CreateMatchLambdaFunction"
-              },
-              "CodeSha256": "33uJyJGNa70ZF2TJ8YdRxL9HlIDST1sgbizuNLHuV6E="
-            }
-          },
-          "WsDisconnectLambdaVersionbOnn50bXwdNS3DIhE30J3sfuBBh3E4MV3VmxwwT8iA": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "WsDisconnectLambdaFunction"
-              },
-              "CodeSha256": "33uJyJGNa70ZF2TJ8YdRxL9HlIDST1sgbizuNLHuV6E="
-            }
-          },
-          "WsDefaultLambdaVersionCZt3u9kCwVGBs8Cye8FUu6f9XnMpyiNXHGL6PYA3fU": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "WsDefaultLambdaFunction"
-              },
-              "CodeSha256": "33uJyJGNa70ZF2TJ8YdRxL9HlIDST1sgbizuNLHuV6E="
-            }
-          },
-          "ListMatchesLambdaVersionbMfXz1q0KNxrjjy3j2Uc9HQfQYdyP5OB4akHmCl3k8": {
+          "ListMatchesLambdaVersion7sLb9ChahfQUcFKVZdcQGlCXeP1g4GEwIR9NkI8VUM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListMatchesLambdaFunction"
               },
-              "CodeSha256": "33uJyJGNa70ZF2TJ8YdRxL9HlIDST1sgbizuNLHuV6E="
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
             }
           },
-          "WsConnectLambdaVersionsJBRRWPXaSrmDKTLpqOaUNP3GcFGuxES552pBvgJ28": {
+          "CreateMatchLambdaVersionoosDCQolW6OlkOyRhvSMEQFquMqzZp3dNKeWFBN6E": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "CreateMatchLambdaFunction"
+              },
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
+            }
+          },
+          "CreateClubLambdaVersionqJWWkKBD8sZBjge2xeFkZZtd2kVlBWQUVPDIOHxozkg": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "CreateClubLambdaFunction"
+              },
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
+            }
+          },
+          "WsConnectLambdaVersionigH7HUxVyGEMBZaDxm9rVYFw8eCiYbqMvg5pSUSVbg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "WsConnectLambdaFunction"
               },
-              "CodeSha256": "33uJyJGNa70ZF2TJ8YdRxL9HlIDST1sgbizuNLHuV6E="
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
+            }
+          },
+          "UpdateScoreLambdaVersiongrwwgbxwofW2CMVDbtx95TkxsqtRrH8NfKaMF2IihA": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UpdateScoreLambdaFunction"
+              },
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
+            }
+          },
+          "FinalizeMatchLambdaVersionFfEI0sDmPBKVPqmXApt5R3BkNVeuF06ueonX1kdA": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "FinalizeMatchLambdaFunction"
+              },
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
+            }
+          },
+          "WsDefaultLambdaVersionCHRF1bLFRVTdjEsdfzDHVRuWu4btO2k5FfT0rIVE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "WsDefaultLambdaFunction"
+              },
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
+            }
+          },
+          "WsDisconnectLambdaVersionlFWTUhn12dvUoqI5lwWNKzq2Tud1q53PlfilD1qAI4": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "WsDisconnectLambdaFunction"
+              },
+              "CodeSha256": "Tg/w8qLC8w9rMT50+Yn8enfI6kkfHpFPwKsYK6b4j6w="
             }
           },
           "ApiGatewayRestApi": {
@@ -513,6 +654,42 @@
                 ]
               },
               "PathPart": "matches",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceMatchesMatchidVar": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceMatches"
+              },
+              "PathPart": "{matchId}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceMatchesMatchidVarScore": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceMatchesMatchidVar"
+              },
+              "PathPart": "score",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceMatchesMatchidVarFinalize": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceMatchesMatchidVar"
+              },
+              "PathPart": "finalize",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -602,6 +779,141 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceMatches"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodMatchesMatchidVarOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceMatchesMatchidVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodMatchesMatchidVarScoreOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceMatchesMatchidVarScore"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodMatchesMatchidVarFinalizeOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceMatchesMatchidVarFinalize"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -792,7 +1104,145 @@
               "ListMatchesLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1754808252215": {
+          "ApiGatewayMethodMatchesMatchidVarGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceMatchesMatchidVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GetMatchLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "GetMatchLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodMatchesMatchidVarScorePost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceMatchesMatchidVarScore"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "UpdateScoreLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "UpdateScoreLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodMatchesMatchidVarFinalizePost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceMatchesMatchidVarFinalize"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "FinalizeMatchLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "FinalizeMatchLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayDeployment1755492045454": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -803,10 +1253,16 @@
             "DependsOn": [
               "ApiGatewayMethodClubsOptions",
               "ApiGatewayMethodMatchesOptions",
+              "ApiGatewayMethodMatchesMatchidVarOptions",
+              "ApiGatewayMethodMatchesMatchidVarScoreOptions",
+              "ApiGatewayMethodMatchesMatchidVarFinalizeOptions",
               "ApiGatewayMethodClubsGet",
               "ApiGatewayMethodClubsPost",
               "ApiGatewayMethodMatchesPost",
-              "ApiGatewayMethodMatchesGet"
+              "ApiGatewayMethodMatchesGet",
+              "ApiGatewayMethodMatchesMatchidVarGet",
+              "ApiGatewayMethodMatchesMatchidVarScorePost",
+              "ApiGatewayMethodMatchesMatchidVarFinalizePost"
             ]
           },
           "GetClubsLambdaPermissionApiGateway": {
@@ -926,6 +1382,117 @@
               "FunctionName": {
                 "Fn::GetAtt": [
                   "ListMatchesLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "GetMatchLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "GetMatchLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "UpdateScoreLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "UpdateScoreLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "FinalizeMatchLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "FinalizeMatchLambdaFunction",
                   "Arn"
                 ]
               },
@@ -1326,64 +1893,91 @@
           "GetClubsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetClubsLambdaVersion4LUHigzcb0GCnBtnePuUD7B48WMIKvMg0FuJI0r0ya0"
+              "Ref": "GetClubsLambdaVersionzTGMKUeEL7KOEVlJWv62ydOZnFyNSQy5bBMh3g5jiMY"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-GetClubsLambdaFunctionQualifiedArn"
             }
           },
-          "CreateClubLambdaFunctionQualifiedArn": {
+          "GetMatchLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateClubLambdaVersionp23V1duMvxdx65uE6aOI7PZrt8kNfAP0DZ50xWQ8"
+              "Ref": "GetMatchLambdaVersionQqDM5x4rpYbRWYcfiv7WiIaY0vQoer5KwYP88P0P4ro"
             },
             "Export": {
-              "Name": "sls-tennis-club-tracker-dev-CreateClubLambdaFunctionQualifiedArn"
-            }
-          },
-          "CreateMatchLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "CreateMatchLambdaVersioncufce9XGFzzt9UOvaWnMRoU9gcRlX16IGRHBeuKZuo"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-CreateMatchLambdaFunctionQualifiedArn"
-            }
-          },
-          "WsDisconnectLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "WsDisconnectLambdaVersionbOnn50bXwdNS3DIhE30J3sfuBBh3E4MV3VmxwwT8iA"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-WsDisconnectLambdaFunctionQualifiedArn"
-            }
-          },
-          "WsDefaultLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "WsDefaultLambdaVersionCZt3u9kCwVGBs8Cye8FUu6f9XnMpyiNXHGL6PYA3fU"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-WsDefaultLambdaFunctionQualifiedArn"
+              "Name": "sls-tennis-club-tracker-dev-GetMatchLambdaFunctionQualifiedArn"
             }
           },
           "ListMatchesLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListMatchesLambdaVersionbMfXz1q0KNxrjjy3j2Uc9HQfQYdyP5OB4akHmCl3k8"
+              "Ref": "ListMatchesLambdaVersion7sLb9ChahfQUcFKVZdcQGlCXeP1g4GEwIR9NkI8VUM"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-ListMatchesLambdaFunctionQualifiedArn"
             }
           },
+          "CreateMatchLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "CreateMatchLambdaVersionoosDCQolW6OlkOyRhvSMEQFquMqzZp3dNKeWFBN6E"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-CreateMatchLambdaFunctionQualifiedArn"
+            }
+          },
+          "CreateClubLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "CreateClubLambdaVersionqJWWkKBD8sZBjge2xeFkZZtd2kVlBWQUVPDIOHxozkg"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-CreateClubLambdaFunctionQualifiedArn"
+            }
+          },
           "WsConnectLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "WsConnectLambdaVersionsJBRRWPXaSrmDKTLpqOaUNP3GcFGuxES552pBvgJ28"
+              "Ref": "WsConnectLambdaVersionigH7HUxVyGEMBZaDxm9rVYFw8eCiYbqMvg5pSUSVbg"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
+            }
+          },
+          "UpdateScoreLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "UpdateScoreLambdaVersiongrwwgbxwofW2CMVDbtx95TkxsqtRrH8NfKaMF2IihA"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-UpdateScoreLambdaFunctionQualifiedArn"
+            }
+          },
+          "FinalizeMatchLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "FinalizeMatchLambdaVersionFfEI0sDmPBKVPqmXApt5R3BkNVeuF06ueonX1kdA"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-FinalizeMatchLambdaFunctionQualifiedArn"
+            }
+          },
+          "WsDefaultLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "WsDefaultLambdaVersionCHRF1bLFRVTdjEsdfzDHVRuWu4btO2k5FfT0rIVE"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-WsDefaultLambdaFunctionQualifiedArn"
+            }
+          },
+          "WsDisconnectLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "WsDisconnectLambdaVersionlFWTUhn12dvUoqI5lwWNKzq2Tud1q53PlfilD1qAI4"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-WsDisconnectLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -1480,7 +2074,7 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "GetClubsLambdaVersion4LUHigzcb0GCnBtnePuUD7B48WMIKvMg0FuJI0r0ya0"
+        "versionLogicalId": "GetClubsLambdaVersionzTGMKUeEL7KOEVlJWv62ydOZnFyNSQy5bBMh3g5jiMY"
       },
       "createClub": {
         "handler": "handlers/clubs.create",
@@ -1518,7 +2112,7 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "CreateClubLambdaVersionp23V1duMvxdx65uE6aOI7PZrt8kNfAP0DZ50xWQ8"
+        "versionLogicalId": "CreateClubLambdaVersionqJWWkKBD8sZBjge2xeFkZZtd2kVlBWQUVPDIOHxozkg"
       },
       "createMatch": {
         "handler": "handlers/matches.create",
@@ -1556,7 +2150,7 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "CreateMatchLambdaVersioncufce9XGFzzt9UOvaWnMRoU9gcRlX16IGRHBeuKZuo"
+        "versionLogicalId": "CreateMatchLambdaVersionoosDCQolW6OlkOyRhvSMEQFquMqzZp3dNKeWFBN6E"
       },
       "listMatches": {
         "handler": "handlers/matches.list",
@@ -1594,7 +2188,121 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "ListMatchesLambdaVersionbMfXz1q0KNxrjjy3j2Uc9HQfQYdyP5OB4akHmCl3k8"
+        "versionLogicalId": "ListMatchesLambdaVersion7sLb9ChahfQUcFKVZdcQGlCXeP1g4GEwIR9NkI8VUM"
+      },
+      "getMatch": {
+        "handler": "handlers/matches.get",
+        "events": [
+          {
+            "http": {
+              "path": "matches/{matchId}",
+              "method": "get",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "tennis-club-tracker-dev-getMatch",
+        "package": {
+          "artifact": ".serverless\\getMatch.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs20.x",
+        "vpc": {},
+        "versionLogicalId": "GetMatchLambdaVersionQqDM5x4rpYbRWYcfiv7WiIaY0vQoer5KwYP88P0P4ro"
+      },
+      "updateScore": {
+        "handler": "handlers/matches.score",
+        "events": [
+          {
+            "http": {
+              "path": "matches/{matchId}/score",
+              "method": "post",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "tennis-club-tracker-dev-updateScore",
+        "package": {
+          "artifact": ".serverless\\updateScore.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs20.x",
+        "vpc": {},
+        "versionLogicalId": "UpdateScoreLambdaVersiongrwwgbxwofW2CMVDbtx95TkxsqtRrH8NfKaMF2IihA"
+      },
+      "finalizeMatch": {
+        "handler": "handlers/matches.finalize",
+        "events": [
+          {
+            "http": {
+              "path": "matches/{matchId}/finalize",
+              "method": "post",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "tennis-club-tracker-dev-finalizeMatch",
+        "package": {
+          "artifact": ".serverless\\finalizeMatch.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs20.x",
+        "vpc": {},
+        "versionLogicalId": "FinalizeMatchLambdaVersionFfEI0sDmPBKVPqmXApt5R3BkNVeuF06ueonX1kdA"
       },
       "wsConnect": {
         "handler": "handlers/websocket.connect",
@@ -1613,7 +2321,7 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "WsConnectLambdaVersionsJBRRWPXaSrmDKTLpqOaUNP3GcFGuxES552pBvgJ28"
+        "versionLogicalId": "WsConnectLambdaVersionigH7HUxVyGEMBZaDxm9rVYFw8eCiYbqMvg5pSUSVbg"
       },
       "wsDisconnect": {
         "handler": "handlers/websocket.disconnect",
@@ -1632,7 +2340,7 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "WsDisconnectLambdaVersionbOnn50bXwdNS3DIhE30J3sfuBBh3E4MV3VmxwwT8iA"
+        "versionLogicalId": "WsDisconnectLambdaVersionlFWTUhn12dvUoqI5lwWNKzq2Tud1q53PlfilD1qAI4"
       },
       "wsDefault": {
         "handler": "handlers/websocket.onMessage",
@@ -1651,7 +2359,7 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "WsDefaultLambdaVersionCZt3u9kCwVGBs8Cye8FUu6f9XnMpyiNXHGL6PYA3fU"
+        "versionLogicalId": "WsDefaultLambdaVersionCHRF1bLFRVTdjEsdfzDHVRuWu4btO2k5FfT0rIVE"
       }
     },
     "resources": {
@@ -1790,7 +2498,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/tennis-club-tracker/dev/code-artifacts",
         "deploymentBucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-        "artifactDirectoryName": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z"
+        "artifactDirectoryName": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -1805,7 +2513,7 @@
   },
   "package": {
     "individually": true,
-    "artifactDirectoryName": "serverless/tennis-club-tracker/dev/1754808262621-2025-08-10T06:44:22.621Z",
+    "artifactDirectoryName": "serverless/tennis-club-tracker/dev/1755492057105-2025-08-18T04:40:57.105Z",
     "artifact": ""
   }
 }
