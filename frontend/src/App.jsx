@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "./utils/AuthProvider.jsx";
 
-// Routes (pages)
+// Routes (pages in /routes)
 import ClubDashboard from "./routes/ClubDashboard.jsx";
 import CreateMatch from "./routes/CreateMatch.jsx";
 import Leaderboard from "./routes/Leaderboard.jsx";
@@ -10,10 +11,22 @@ import Login from "./routes/Login.jsx";
 import Signup from "./routes/Signup.jsx";
 import Profile from "./routes/Profile.jsx";
 
-// Pages (not in routes folder)
+// Pages (not in /routes)
 import ClubsTest from "./pages/ClubsTest.jsx";
 
 function Nav() {
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleLogout() {
+    try {
+      await signOut();
+      navigate("/Login");
+    } catch (e) {
+      console.error("Logout failed:", e);
+    }
+  }
+
   return (
     <nav className="w-full border-b bg-white">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
@@ -25,10 +38,25 @@ function Nav() {
         <Link to="/LiveMatch" className="hover:underline">Live Match</Link>
         <Link to="/ClubJoin" className="hover:underline">Join/Create Club</Link>
         <Link to="/ClubsTest" className="hover:underline">Clubs Test</Link>
+
         <div className="ml-auto flex items-center gap-3">
-          <Link to="/Login" className="hover:underline">Login</Link>
-          <Link to="/Signup" className="hover:underline">Signup</Link>
-          <Link to="/Profile" className="hover:underline">Profile</Link>
+          {!user && (
+            <>
+              <Link to="/Login" className="hover:underline">Login</Link>
+              <Link to="/Signup" className="hover:underline">Signup</Link>
+            </>
+          )}
+          {user && (
+            <>
+              <Link to="/Profile" className="hover:underline">Profile</Link>
+              <button
+                onClick={handleLogout}
+                className="text-sm px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300"
+              >
+                Logout
+              </button>
+            </>
+          )}
         </div>
       </div>
     </nav>
@@ -48,7 +76,7 @@ export default function App() {
         <Route path="/CreateMatch" element={<CreateMatch />} />
         <Route path="/Leaderboard" element={<Leaderboard />} />
 
-        {/* LiveMatch: support both clean path and legacy no-param page */}
+        {/* LiveMatch supports clean path param and legacy no-param */}
         <Route path="/LiveMatch" element={<LiveMatch />} />
         <Route path="/LiveMatch/:matchId" element={<LiveMatch />} />
 

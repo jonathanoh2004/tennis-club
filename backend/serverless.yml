@@ -11,6 +11,13 @@ provider:
     MATCHES_TABLE: ${self:service}-${sls:stage}-Matches
     USERS_TABLE: ${self:service}-${sls:stage}-Users
     CONNECTIONS_TABLE: ${self:service}-${sls:stage}-Connections
+    CLUB_MEMBERS_TABLE: ${self:service}-${sls:stage}-ClubMembers
+    # 👇 used by JWT verification in Lambda
+    COGNITO_REGION: us-west-2
+    COGNITO_POOL_ID: us-east-2_EMupYOMCX
+    COGNITO_CLIENT_ID: 1r9nmq4bkde47heaaimfsh3a87
+  
+  
   iam:
     role:
       statements:
@@ -28,6 +35,11 @@ provider:
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.USERS_TABLE}
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CLUB_MEMBERS_TABLE}
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CLUB_MEMBERS_TABLE}/index/byUser
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}/index/byClub
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}/index/byClub
+
         # Query on GSIs
         - Effect: Allow
           Action:
@@ -109,6 +121,9 @@ functions:
           method: post
           cors: true
 
+  preSignUp:
+    handler: handlers/authTriggers.preSignUp
+
   # ---------- WebSocket ----------
   wsConnect:
     handler: handlers/websocket.connect
@@ -127,6 +142,24 @@ functions:
     events:
       - websocket:
           route: $default
+  
+  # Users
+  getMe:
+    handler: handlers/users.getMe
+    events: [{ http: { path: me, method: get, cors: true } }]
+
+  updateProfile:
+    handler: handlers/users.updateProfile
+    events: [{ http: { path: profile, method: post, cors: true } }]
+
+  # Club membership
+  joinClub:
+    handler: handlers/members.join
+    events: [{ http: { path: clubs/{clubId}/members, method: post, cors: true } }]
+
+  listMembers:
+    handler: handlers/members.list
+    events: [{ http: { path: clubs/{clubId}/members, method: get, cors: true } }]
 
 resources:
   Resources:
@@ -199,3 +232,27 @@ resources:
                 KeyType: HASH
             Projection:
               ProjectionType: ALL
+    
+    ClubMembersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.CLUB_MEMBERS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: clubId
+            AttributeType: S
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: clubId
+            KeyType: HASH
+          - AttributeName: userId
+            KeyType: RANGE
+        GlobalSecondaryIndexes:
+          - IndexName: byUser
+            KeySchema:
+              - AttributeName: userId
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+      
