@@ -14,6 +14,7 @@ provider:
   iam:
     role:
       statements:
+        # Table-level CRUD + read ops
         - Effect: Allow
           Action:
             - dynamodb:PutItem
@@ -27,8 +28,14 @@ provider:
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.USERS_TABLE}
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}
+        # Query on GSIs
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+          Resource:
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}/index/byClub
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}/index/byClub
+        # WebSocket connection mgmt
         - Effect: Allow
           Action:
             - execute-api:ManageConnections
@@ -43,7 +50,6 @@ package:
     - "node_modules/**"
     - "package.json"
     - "package-lock.json"
-
 
 functions:
   # ---------- REST ----------
@@ -62,7 +68,7 @@ functions:
           path: clubs
           method: post
           cors: true
-          
+
   createMatch:
     handler: handlers/matches.create
     events:
@@ -102,7 +108,6 @@ functions:
           path: matches/{matchId}/finalize
           method: post
           cors: true
-
 
   # ---------- WebSocket ----------
   wsConnect:
@@ -159,6 +164,8 @@ resources:
             AttributeType: S
           - AttributeName: clubId
             AttributeType: S
+          - AttributeName: startedAt
+            AttributeType: N
         KeySchema:
           - AttributeName: matchId
             KeyType: HASH
@@ -167,6 +174,8 @@ resources:
             KeySchema:
               - AttributeName: clubId
                 KeyType: HASH
+              - AttributeName: startedAt
+                KeyType: RANGE
             Projection:
               ProjectionType: ALL
 
