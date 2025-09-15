@@ -1,33 +1,41 @@
-// backend/handlers/clubs.js
 import { ddb } from "../utils/dynamo.js";
-import { GetCommand, PutCommand, ScanCommand } from "@aws-sdk/lib-dynamodb";
+import { ScanCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { ok, bad } from "../utils/responses.js";
 import { nanoid } from "nanoid";
+import { requireAuth } from "../utils/verifyCognitoJwt.js";
 
 const CLUBS_TABLE = process.env.CLUBS_TABLE;
 
-export const get = async () => {
+export const get = async (event) => {
+  const origin = event?.headers?.origin || event?.headers?.Origin;
   try {
     const res = await ddb.send(new ScanCommand({ TableName: CLUBS_TABLE }));
-    return ok(res.Items || []);
+    return ok({ items: res.Items ?? [] }, origin, 200);
   } catch (e) {
-    return bad(500, { message: e.message || String(e) });
+    return bad(500, "Internal error", origin, { detail: e?.message ?? String(e) });
   }
 };
 
-export const create = async (event) => {
+async function _create(event) {
+  const origin = event?.headers?.origin || event?.headers?.Origin;
+  const user = event.requestContext.authorizer?.user; // from JWT
   try {
-    const body = json(event.body);
+    const body = safeJson(event?.body);
+    const name = (body?.name ?? "").trim();
+    if (!name) return bad(400, "Field 'name' is required", origin);
+
     const club = {
       clubId: `club_${nanoid(8)}`,
-      name: (body.name || "Unnamed Club").trim(),
+      name,
+      createdAt: Date.now(),
+      createdBy: user?.sub,
     };
     await ddb.send(new PutCommand({ TableName: CLUBS_TABLE, Item: club }));
-    return ok(club, 201);
+    return ok(club, origin, 201);
   } catch (e) {
-    return bad(500, { message: e.message || String(e) });
+    return bad(500, "Internal error", origin, { detail: e?.message ?? String(e) });
   }
-};
+}
+export const create = requireAuth(_create);
 
-/* helpers */
-const json = (b) => (b ? JSON.parse(b) : {});
+function safeJson(b) { try { return b ? JSON.parse(b) : {}; } catch { return {}; } }

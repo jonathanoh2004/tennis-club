@@ -66,7 +66,14 @@ functions:
       - http:
           path: clubs
           method: get
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   createClub:
     handler: handlers/clubs.create
@@ -74,7 +81,14 @@ functions:
       - http:
           path: clubs
           method: post
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   createMatch:
     handler: handlers/matches.create
@@ -82,7 +96,14 @@ functions:
       - http:
           path: matches
           method: post
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   listMatches:
     handler: handlers/matches.list
@@ -90,7 +111,14 @@ functions:
       - http:
           path: matches
           method: get
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   getMatch:
     handler: handlers/matches.get
@@ -98,7 +126,14 @@ functions:
       - http:
           path: matches/{matchId}
           method: get
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   updateScore:
     handler: handlers/matches.score
@@ -106,7 +141,14 @@ functions:
       - http:
           path: matches/{matchId}/score
           method: post
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   finalizeMatch:
     handler: handlers/matches.finalize
@@ -114,7 +156,14 @@ functions:
       - http:
           path: matches/{matchId}/finalize
           method: post
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   # Users
   getMe:
@@ -123,7 +172,14 @@ functions:
       - http:
           path: me
           method: get
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   updateProfile:
     handler: handlers/users.updateProfile
@@ -131,7 +187,14 @@ functions:
       - http:
           path: profile
           method: post
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   # Club membership
   joinClub:
@@ -140,7 +203,14 @@ functions:
       - http:
           path: clubs/{clubId}/members
           method: post
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   listMembers:
     handler: handlers/members.list
@@ -148,7 +218,14 @@ functions:
       - http:
           path: clubs/{clubId}/members
           method: get
-          cors: true
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
 
   # Optional: Pre sign-up auto-confirm trigger (not wired in console)
   preSignUp:

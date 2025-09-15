@@ -25,6 +25,8 @@ export default function Login() {
       // Ensure tokens are ready (important before calling protected APIs)
       const idToken = await authApi.getIdToken();
       console.log("[login] idToken length:", idToken?.length);
+      console.log("[login] idToken value:", idToken);
+
       if (!idToken) {
         setMsg(
           "Signed in, but no token yet. If you just created the account, check your email to confirm, then try again."
