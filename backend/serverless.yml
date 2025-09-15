@@ -12,12 +12,13 @@ provider:
     USERS_TABLE: ${self:service}-${sls:stage}-Users
     CONNECTIONS_TABLE: ${self:service}-${sls:stage}-Connections
     CLUB_MEMBERS_TABLE: ${self:service}-${sls:stage}-ClubMembers
-    # 👇 used by JWT verification in Lambda
-    COGNITO_REGION: us-west-2
+    # GSI name used by matches.list
+    MATCHES_BY_CLUB_INDEX: byClubV2
+    # JWT verification (Cognito)
+    COGNITO_REGION: us-east-2
     COGNITO_POOL_ID: us-east-2_EMupYOMCX
-    COGNITO_CLIENT_ID: 1r9nmq4bkde47heaaimfsh3a87
-  
-  
+    COGNITO_CLIENT_ID: 35qpjq5uuv929k26amc1rbkdlk
+
   iam:
     role:
       statements:
@@ -36,17 +37,11 @@ provider:
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.USERS_TABLE}
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CLUB_MEMBERS_TABLE}
-            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CLUB_MEMBERS_TABLE}/index/byUser
-            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}/index/byClub
-            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}/index/byClub
+            # allow ALL GSIs on these tables (prevents future ARN edits)
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}/index/*
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}/index/*
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CLUB_MEMBERS_TABLE}/index/*
 
-        # Query on GSIs
-        - Effect: Allow
-          Action:
-            - dynamodb:Query
-          Resource:
-            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}/index/byClub
-            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CONNECTIONS_TABLE}/index/byClub
         # WebSocket connection mgmt
         - Effect: Allow
           Action:
@@ -57,11 +52,11 @@ provider:
 package:
   individually: true
   patterns:
-    - "handlers/**"
-    - "utils/**"
-    - "node_modules/**"
-    - "package.json"
-    - "package-lock.json"
+    - handlers/**
+    - utils/**
+    - node_modules/**
+    - package.json
+    - package-lock.json
 
 functions:
   # ---------- REST ----------
@@ -121,6 +116,41 @@ functions:
           method: post
           cors: true
 
+  # Users
+  getMe:
+    handler: handlers/users.getMe
+    events:
+      - http:
+          path: me
+          method: get
+          cors: true
+
+  updateProfile:
+    handler: handlers/users.updateProfile
+    events:
+      - http:
+          path: profile
+          method: post
+          cors: true
+
+  # Club membership
+  joinClub:
+    handler: handlers/members.join
+    events:
+      - http:
+          path: clubs/{clubId}/members
+          method: post
+          cors: true
+
+  listMembers:
+    handler: handlers/members.list
+    events:
+      - http:
+          path: clubs/{clubId}/members
+          method: get
+          cors: true
+
+  # Optional: Pre sign-up auto-confirm trigger (not wired in console)
   preSignUp:
     handler: handlers/authTriggers.preSignUp
 
@@ -142,24 +172,6 @@ functions:
     events:
       - websocket:
           route: $default
-  
-  # Users
-  getMe:
-    handler: handlers/users.getMe
-    events: [{ http: { path: me, method: get, cors: true } }]
-
-  updateProfile:
-    handler: handlers/users.updateProfile
-    events: [{ http: { path: profile, method: post, cors: true } }]
-
-  # Club membership
-  joinClub:
-    handler: handlers/members.join
-    events: [{ http: { path: clubs/{clubId}/members, method: post, cors: true } }]
-
-  listMembers:
-    handler: handlers/members.list
-    events: [{ http: { path: clubs/{clubId}/members, method: get, cors: true } }]
 
 resources:
   Resources:
@@ -203,7 +215,16 @@ resources:
           - AttributeName: matchId
             KeyType: HASH
         GlobalSecondaryIndexes:
+          # Keep the existing GSI EXACTLY as it exists in AWS (hash-only)
           - IndexName: byClub
+            KeySchema:
+              - AttributeName: clubId
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+
+          # Add the new GSI you will use going forward (hash + range)
+          - IndexName: byClubV2
             KeySchema:
               - AttributeName: clubId
                 KeyType: HASH
@@ -232,7 +253,7 @@ resources:
                 KeyType: HASH
             Projection:
               ProjectionType: ALL
-    
+
     ClubMembersTable:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -255,4 +276,3 @@ resources:
                 KeyType: HASH
             Projection:
               ProjectionType: ALL
-      

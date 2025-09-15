@@ -36,26 +36,23 @@ export const create = async (event) => {
 };
 
 /** GET /matches?clubId=... */
-export const list = async (event) => {
-  try {
-    const clubId = event?.queryStringParameters?.clubId;
-    if (!clubId) return bad(400, { message: "clubId query param required" });
+export async function list(event) {
+  const clubId = event.queryStringParameters?.clubId;
+  if (!clubId) return bad(400, { error: "clubId required" });
 
-    const res = await ddb.send(
-      new QueryCommand({
-        TableName: MATCHES_TABLE,
-        IndexName: "byClub",
-        KeyConditionExpression: "clubId = :c",
-        ExpressionAttributeValues: { ":c": clubId },
-        // If your GSI has startedAt as RANGE, you can sort newest first:
-        // ScanIndexForward: false,
-      })
-    );
-    return ok(res.Items || []);
-  } catch (e) {
-    return bad(500, { message: e.message || String(e) });
-  }
-};
+  const IndexName = process.env.MATCHES_BY_CLUB_INDEX || "byClubV2";
+
+  const params = {
+    TableName: process.env.MATCHES_TABLE,
+    IndexName,
+    KeyConditionExpression: "clubId = :c",
+    ExpressionAttributeValues: { ":c": clubId },
+    ScanIndexForward: false, // newest first (uses startedAt as RANGE)
+  };
+
+  const { Items } = await dynamo.query(params);
+  return ok({ items: Items });
+}
 
 /** GET /matches/{matchId} */
 export const get = async (event) => {
