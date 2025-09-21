@@ -1,140 +1,206 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-
-const API_BASE = import.meta.env.VITE_API_BASE;
+import { useNavigate, useParams, useSearchParams, Link } from "react-router-dom";
+import { api } from "../utils/api";
 
 export default function LiveMatch() {
   const navigate = useNavigate();
-  const { matchId: pathMatchId } = useParams();
-  const [searchParams] = useSearchParams();
-  const queryMatchId = searchParams.get("matchId") || "";
+  const { matchId: matchIdParam } = useParams();           // supports /LiveMatch/:matchId
+  const [search] = useSearchParams();                      // supports /LiveMatch?matchId=...
+  const matchId =
+    matchIdParam ||
+    search.get("matchId") ||
+    search.get("id") ||
+    ""; // empty -> show friendly error
 
-  const matchId = useMemo(() => pathMatchId || queryMatchId || "", [pathMatchId, queryMatchId]);
-
-  const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState("");
   const [match, setMatch] = useState(null);
+  const [err, setErr] = useState("");
+  const [busy, setBusy] = useState(false);
 
-  async function loadMatch(id) {
-    if (!id) return;
-    setLoading(true);
+  // prefer server value; fall back to query param
+  const clubId = match?.clubId || search.get("clubId") || "";
+
+  async function load() {
     setErr("");
+    if (!matchId) {
+      setMatch(null);
+      return;
+    }
     try {
-      const res = await fetch(`${API_BASE}/matches/${encodeURIComponent(id)}`);
-      if (!res.ok) throw new Error(`GET /matches/${id} -> ${res.status}`);
-      const data = await res.json();
+      const data = await api.get(`/matches/${encodeURIComponent(matchId)}`);
       setMatch(data);
     } catch (e) {
-      setErr(String(e.message || e));
-      setMatch(null);
-    } finally {
-      setLoading(false);
+      setErr(e?.message || String(e));
     }
   }
 
   useEffect(() => {
-    if (matchId) loadMatch(matchId);
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matchId]);
 
-  function handleJump(e) {
-    e.preventDefault();
-    const id = new FormData(e.currentTarget).get("matchId")?.toString().trim();
-    if (id) navigate(`/LiveMatch/${encodeURIComponent(id)}`);
-  }
+  const teamALabel = useMemo(() => (match?.teams?.A || []).join(" & "), [match]);
+  const teamBLabel = useMemo(() => (match?.teams?.B || []).join(" & "), [match]);
+  const sA = match?.score?.A ?? 0;
+  const sB = match?.score?.B ?? 0;
 
-  if (!matchId) {
-    return (
-      <div className="p-6 max-w-xl mx-auto">
-        <h1 className="text-xl font-bold">Open Live Match</h1>
-        <p className="text-sm text-gray-600 mt-1">Enter a match ID to view or manage it.</p>
-        <form onSubmit={handleJump} className="mt-4 flex gap-2">
-          <input
-            name="matchId"
-            className="flex-1 rounded-xl border px-3 py-2"
-            placeholder="match_123..."
-          />
-          <button className="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
-            Open
-          </button>
-        </form>
-      </div>
-    );
-  }
-
-  const a = match?.teams?.A || match?.teams?.a || match?.teamA || [];
-  const b = match?.teams?.B || match?.teams?.b || match?.teamB || [];
-  const scoreA = match?.score?.A ?? match?.score?.a ?? match?.scoreA ?? 0;
-  const scoreB = match?.score?.B ?? match?.score?.b ?? match?.scoreB ?? 0;
-
-  async function bump(which, delta) {
+  async function adjust(team, delta) {
+    if (!matchId) return;
+    setBusy(true);
+    setErr("");
     try {
-      const res = await fetch(`${API_BASE}/matches/${encodeURIComponent(matchId)}/score`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ which, delta }),
+      await api.post(`/matches/${encodeURIComponent(matchId)}/score`, {
+        team,
+        delta,
+        clubId,
       });
-      if (!res.ok) throw new Error(`POST score -> ${res.status}`);
-      await loadMatch(matchId);
+      await load();
     } catch (e) {
-      setErr(String(e.message || e));
+      setErr(`POST score -> ${e?.status || ""} ${e?.message || e}`);
+    } finally {
+      setBusy(false);
     }
   }
 
   async function finalize() {
+    if (!matchId) return;
+    setBusy(true);
+    setErr("");
     try {
-      const res = await fetch(`${API_BASE}/matches/${encodeURIComponent(matchId)}/finalize`, {
-        method: "POST"
-      });
-      if (!res.ok) throw new Error(`POST finalize -> ${res.status}`);
-      await loadMatch(matchId);
+      await api.post(`/matches/${encodeURIComponent(matchId)}/finalize`, { clubId });
+      navigate(`/ClubDashboard?clubId=${encodeURIComponent(clubId)}`);
     } catch (e) {
-      setErr(String(e.message || e));
+      setErr(`POST finalize -> ${e?.status || ""} ${e?.message || e}`);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function joinClub() {
+    if (!clubId) {
+      setErr("No clubId found to join.");
+      return;
+    }
+    setBusy(true);
+    setErr("");
+    try {
+      await api.post(`/clubs/${encodeURIComponent(clubId)}/members`, {});
+      await load();
+    } catch (e) {
+      setErr(`Join club failed: ${e?.message || e}`);
+    } finally {
+      setBusy(false);
     }
   }
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold">Live Match</h1>
-        <div className="text-xs text-gray-500">Match ID: {matchId}</div>
+    <div className="max-w-5xl mx-auto p-4">
+      <div className="flex items-center justify-between mb-2">
+        <h1 className="text-xl font-semibold">Live Match</h1>
+        <div className="flex gap-2">
+          {clubId && (
+            <Link
+              className="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50"
+              to={`/ClubDashboard?clubId=${encodeURIComponent(clubId)}`}
+            >
+              Back to Club
+            </Link>
+          )}
+        </div>
       </div>
 
-      {loading && <p className="mt-3 text-sm text-gray-500">Loading…</p>}
-      {err && <p className="mt-3 text-sm text-red-600">Error: {err}</p>}
-
-      {match && (
-        <div className="mt-4 space-y-4">
-          <div className="text-sm text-gray-600">
-            Club: <span className="font-mono">{match.clubId}</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
-            <div className="p-4 rounded-2xl border">
-              <div className="text-xs text-gray-500 mb-1">Team A</div>
-              <div className="font-medium">{a.join(" & ") || "-"}</div>
-            </div>
-
-            <div className="text-center p-4 rounded-2xl border font-mono text-2xl">
-              {scoreA} : {scoreB}
-            </div>
-
-            <div className="p-4 rounded-2xl border">
-              <div className="text-xs text-gray-500 mb-1">Team B</div>
-              <div className="font-medium">{b.join(" & ") || "-"}</div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            <button onClick={() => bump("A", +1)} className="px-3 py-2 rounded-xl border">A +1</button>
-            <button onClick={() => bump("A", -1)} className="px-3 py-2 rounded-xl border">A -1</button>
-            <button onClick={() => bump("B", +1)} className="px-3 py-2 rounded-xl border">B +1</button>
-            <button onClick={() => bump("B", -1)} className="px-3 py-2 rounded-xl border">B -1</button>
-            <button onClick={finalize} className="ml-auto px-3 py-2 rounded-xl bg-green-600 text-white hover:bg-green-700">
-              Finalize
-            </button>
-          </div>
+      {!matchId && (
+        <div className="mb-4 rounded-lg border border-red-300 bg-red-50 text-red-700 px-3 py-2">
+          Missing matchId in URL.
         </div>
       )}
+
+      {matchId && (
+        <p className="text-xs text-gray-500 mb-2">
+          Match ID: <span className="font-mono">{matchId}</span>
+        </p>
+      )}
+      {clubId && (
+        <p className="text-xs text-gray-500 mb-4">
+          Club: <span className="font-mono">{clubId}</span>
+        </p>
+      )}
+
+      {err && (
+        <div className="mb-4 rounded-lg border border-red-300 bg-red-50 text-red-700 px-3 py-2">
+          {String(err)}
+          {String(err).includes("401") && clubId && (
+            <div className="mt-2">
+              <button
+                onClick={joinClub}
+                disabled={busy}
+                className="text-sm px-3 py-1 rounded-md bg-black text-white disabled:opacity-50"
+              >
+                Join this club
+              </button>
+              <span className="ml-2 text-xs text-gray-600">
+                (Required to update scores)
+              </span>
+            </div>
+          )}
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+        <div className="rounded-2xl border p-4">
+          <div className="text-xs text-gray-600 mb-1">Team A</div>
+          <div className="text-lg font-medium">{teamALabel || "—"}</div>
+        </div>
+
+        <div className="rounded-2xl border p-4 text-center">
+          <div className="text-xl font-semibold">
+            {sA} : {sB}
+          </div>
+        </div>
+
+        <div className="rounded-2xl border p-4">
+          <div className="text-xs text-gray-600 mb-1">Team B</div>
+          <div className="text-lg font-medium">{teamBLabel || "—"}</div>
+        </div>
+      </div>
+
+      <div className="flex gap-3 mt-4">
+        <button
+          disabled={busy || !matchId}
+          onClick={() => adjust("A", +1)}
+          className="px-4 py-2 rounded-xl border hover:bg-gray-50 disabled:opacity-50"
+        >
+          A +1
+        </button>
+        <button
+          disabled={busy || !matchId}
+          onClick={() => adjust("A", -1)}
+          className="px-4 py-2 rounded-xl border hover:bg-gray-50 disabled:opacity-50"
+        >
+          A -1
+        </button>
+        <button
+          disabled={busy || !matchId}
+          onClick={() => adjust("B", +1)}
+          className="px-4 py-2 rounded-xl border hover:bg-gray-50 disabled:opacity-50"
+        >
+          B +1
+        </button>
+        <button
+          disabled={busy || !matchId}
+          onClick={() => adjust("B", -1)}
+          className="px-4 py-2 rounded-xl border hover:bg-gray-50 disabled:opacity-50"
+        >
+          B -1
+        </button>
+
+        <button
+          disabled={busy || !matchId}
+          onClick={finalize}
+          className="ml-auto px-4 py-2 rounded-xl bg-emerald-600 text-white disabled:opacity-50"
+        >
+          Finalize
+        </button>
+      </div>
     </div>
   );
 }

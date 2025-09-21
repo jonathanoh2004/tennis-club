@@ -57,7 +57,7 @@ export default function CreateMatch() {
       const matchId = res?.matchId;
       if (matchId) {
         // go straight to live match, or back to the dashboard—your choice:
-        navigate(`/LiveMatch/${encodeURIComponent(matchId)}`);
+        navigate(`/LiveMatch?matchId=${encodeURIComponent(matchId)}&clubId=${encodeURIComponent(clubId)}`);
       } else {
         // fallback
         navigate(`/ClubDashboard?clubId=${encodeURIComponent(clubId)}`);
