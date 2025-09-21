@@ -1,10 +1,9 @@
-// backend/utils/responses.js
+// backend/utils/responses.js  (ESM)
 
-// Allowed origins for CORS
 const ALLOW = new Set([
   "https://tenniscluboh.com",
   "https://www.tenniscluboh.com",
-  "http://localhost:5173", // allow local dev
+  "http://localhost:5173", // local dev
 ]);
 
 function corsHeaders(origin) {
@@ -13,11 +12,11 @@ function corsHeaders(origin) {
     "Access-Control-Allow-Origin": allowed,
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-    "Access-Control-Allow-Credentials": "false",
   };
 }
 
-// Success response
+// Keep the same call signature your handlers use:
+// ok(body, origin, statusCode?, extraHeaders?)
 export function ok(body, origin, statusCode = 200, extraHeaders = {}) {
   return {
     statusCode,
@@ -30,19 +29,7 @@ export function ok(body, origin, statusCode = 200, extraHeaders = {}) {
   };
 }
 
-// Error response
-export function bad(statusCode, message, origin, extra = {}) {
-  return {
-    statusCode,
-    headers: { ...corsHeaders(origin) },
-    body: JSON.stringify({ message, ...extra }),
-  };
-}
-
-// Back-compat alias
-export const err = bad;
-
-// No content response (204)
+// noContent(origin, extraHeaders?)
 export function noContent(origin, extraHeaders = {}) {
   return {
     statusCode: 204,
@@ -51,7 +38,19 @@ export function noContent(origin, extraHeaders = {}) {
   };
 }
 
-// Preflight response (for OPTIONS requests if needed)
+// bad(statusCode, message, origin, extra?)
+export function bad(statusCode, message, origin, extra = {}) {
+  return {
+    statusCode,
+    headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
+    body: JSON.stringify({ message, ...extra }),
+  };
+}
+
+// Back-compat alias if anything imports `err`
+export const err = bad;
+
+// Optional: if you ever wire OPTIONS manually
 export function preflight(origin, extraHeaders = {}) {
   return {
     statusCode: 204,

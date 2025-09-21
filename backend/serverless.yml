@@ -13,7 +13,7 @@ provider:
     CONNECTIONS_TABLE: ${self:service}-${sls:stage}-Connections
     CLUB_MEMBERS_TABLE: ${self:service}-${sls:stage}-ClubMembers
     # GSI name used by matches.list
-    MATCHES_BY_CLUB_INDEX: byClubV2
+    MATCHES_BY_CLUB_INDEX: byClubV2 # <------------- holy bug
     # JWT verification (Cognito)
     COGNITO_REGION: us-east-2
     COGNITO_POOL_ID: us-east-2_EMupYOMCX

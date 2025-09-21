@@ -281,7 +281,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getClubs.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getClubs.zip"
                 },
                 "Handler": "handlers/clubs.get",
                 "Runtime": "nodejs20.x",
@@ -317,7 +317,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/createClub.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/createClub.zip"
                 },
                 "Handler": "handlers/clubs.create",
                 "Runtime": "nodejs20.x",
@@ -353,7 +353,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/createMatch.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/createMatch.zip"
                 },
                 "Handler": "handlers/matches.create",
                 "Runtime": "nodejs20.x",
@@ -389,7 +389,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/deleteClub.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/deleteClub.zip"
                 },
                 "Handler": "handlers/clubs_delete.handler",
                 "Runtime": "nodejs20.x",
@@ -425,7 +425,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/listMatches.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/listMatches.zip"
                 },
                 "Handler": "handlers/matches.list",
                 "Runtime": "nodejs20.x",
@@ -461,7 +461,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getMatch.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getMatch.zip"
                 },
                 "Handler": "handlers/matches.get",
                 "Runtime": "nodejs20.x",
@@ -497,7 +497,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/updateScore.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/updateScore.zip"
                 },
                 "Handler": "handlers/matches.score",
                 "Runtime": "nodejs20.x",
@@ -533,7 +533,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/finalizeMatch.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/finalizeMatch.zip"
                 },
                 "Handler": "handlers/matches.finalize",
                 "Runtime": "nodejs20.x",
@@ -569,7 +569,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getMe.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getMe.zip"
                 },
                 "Handler": "handlers/users.getMe",
                 "Runtime": "nodejs20.x",
@@ -605,7 +605,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/updateProfile.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/updateProfile.zip"
                 },
                 "Handler": "handlers/users.updateProfile",
                 "Runtime": "nodejs20.x",
@@ -641,7 +641,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/joinClub.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/joinClub.zip"
                 },
                 "Handler": "handlers/members.join",
                 "Runtime": "nodejs20.x",
@@ -677,7 +677,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/listMembers.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/listMembers.zip"
                 },
                 "Handler": "handlers/members.list",
                 "Runtime": "nodejs20.x",
@@ -713,7 +713,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/preSignUp.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/preSignUp.zip"
                 },
                 "Handler": "handlers/authTriggers.preSignUp",
                 "Runtime": "nodejs20.x",
@@ -749,7 +749,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsConnect.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsConnect.zip"
                 },
                 "Handler": "handlers/websocket.connect",
                 "Runtime": "nodejs20.x",
@@ -785,7 +785,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsDisconnect.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsDisconnect.zip"
                 },
                 "Handler": "handlers/websocket.disconnect",
                 "Runtime": "nodejs20.x",
@@ -821,7 +821,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                  "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsDefault.zip"
+                  "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsDefault.zip"
                 },
                 "Handler": "handlers/websocket.onMessage",
                 "Runtime": "nodejs20.x",
@@ -852,164 +852,164 @@
                 "WsDefaultLogGroup"
               ]
             },
-            "GetClubsLambdaVersionaHmlp3PuL50sfJGC4wUCzwcsz7t5IOtuh9GMoLXDqE": {
-              "Type": "AWS::Lambda::Version",
-              "DeletionPolicy": "Retain",
-              "Properties": {
-                "FunctionName": {
-                  "Ref": "GetClubsLambdaFunction"
-                },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-              }
-            },
-            "GetMatchLambdaVersionhVnhV0ZAy7yl7qy4bIb9EMuYMdnVcdjgHXcUhVTJcs": {
-              "Type": "AWS::Lambda::Version",
-              "DeletionPolicy": "Retain",
-              "Properties": {
-                "FunctionName": {
-                  "Ref": "GetMatchLambdaFunction"
-                },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-              }
-            },
-            "DeleteClubLambdaVersion8KPvphgwysagbG11OPTEfyRMFPpr21ExuEBKANyxOL4": {
-              "Type": "AWS::Lambda::Version",
-              "DeletionPolicy": "Retain",
-              "Properties": {
-                "FunctionName": {
-                  "Ref": "DeleteClubLambdaFunction"
-                },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-              }
-            },
-            "CreateClubLambdaVersionli3ZWkBRFRtJjDgYmKnQ85H8HfM7xZ4GNXY6YucB9Y": {
+            "CreateClubLambdaVersionct0IaZC6zFwaO5fFsBIhFZP9oZSncn7ImmMVhL67TI": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "CreateClubLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
-            "UpdateScoreLambdaVersionVkz84E9I5B02QF6S3BAoxsiKN55ZKDDdCpSWmNvrc": {
+            "GetClubsLambdaVersionaN7fy0xORcMJDeEqp3bWhhDyDiBALnDgczMW31TML0": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
-                  "Ref": "UpdateScoreLambdaFunction"
+                  "Ref": "GetClubsLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
-            "GetMeLambdaVersionSHqYiuZV2WPlT4RstjXjjGWe06VlDypI5c5KYYkg2rk": {
-              "Type": "AWS::Lambda::Version",
-              "DeletionPolicy": "Retain",
-              "Properties": {
-                "FunctionName": {
-                  "Ref": "GetMeLambdaFunction"
-                },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-              }
-            },
-            "CreateMatchLambdaVersionfjk7yizpq8YuyEQmrcCXhJ01O9ecrBAzWlQdpTIoIU": {
+            "CreateMatchLambdaVersionwmkqpoBJhnI25Cq9X9ZvhsvJ8WvLTqkDXAIxmpUxo": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "CreateMatchLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
-            "ListMatchesLambdaVersionGhUZyhpDjr45ZjEM3RZw4q89bSxnqLvDX93DwM8og": {
+            "DeleteClubLambdaVersion5LcOe6w3qFyfDK2NoFrb4661qP7zO8BK3CrVNHeeyg": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "DeleteClubLambdaFunction"
+                },
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+              }
+            },
+            "GetMatchLambdaVersion9sY08c54HCPegivDFgH3ra4xxestqQxJlYXXUReztc": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "GetMatchLambdaFunction"
+                },
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+              }
+            },
+            "UpdateScoreLambdaVersionrHOp994yXo216RNe2Pqn6N9xIohpcsYa7r2rcoGLfs": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "UpdateScoreLambdaFunction"
+                },
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+              }
+            },
+            "ListMatchesLambdaVersion3fHY78sc6nzYVrhF41Yg0GOpT2AneiYkOT3L0plQ": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ListMatchesLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
-            "UpdateProfileLambdaVersionZ4C6lA7aqRmBhDQAAvr4ScVSWOZXPh6lk7DnBaqxarY": {
+            "GetMeLambdaVersion65WFSST83TOPmH5gpk8XQZTff0e8GPNgYlcaqjPto": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
-                  "Ref": "UpdateProfileLambdaFunction"
+                  "Ref": "GetMeLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
-            "FinalizeMatchLambdaVersion0fZ7wOKH4JddNxagKOv8a8PyME4rLnGMgCyj0IhTQ2s": {
+            "FinalizeMatchLambdaVersionnWclLDrfSeANwtmXnYdD1PS2mhDVLR6yMBxgRc1ayek": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "FinalizeMatchLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
-            "ListMembersLambdaVersionKo1hBrgZ3nNgS2OZHqjY9PQFmuaxiByHp7FYpVovGgg": {
+            "UpdateProfileLambdaVersionc8FC50ByTmYRf8I19oj7NuiBiFiPuEMltyi0bMhEE": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "UpdateProfileLambdaFunction"
+                },
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+              }
+            },
+            "ListMembersLambdaVersionccQXT5JYAlHvo2Oqp7pilqmLdzxc0GCJVKjwKuU2bQ": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ListMembersLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
-            "JoinClubLambdaVersionhT7vZtEr6vGTHhFFWtFTVTWleoUq3WQ5ZT5D0T247JA": {
-              "Type": "AWS::Lambda::Version",
-              "DeletionPolicy": "Retain",
-              "Properties": {
-                "FunctionName": {
-                  "Ref": "JoinClubLambdaFunction"
-                },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-              }
-            },
-            "PreSignUpLambdaVersioncAdcPHZYmNGk9F1ukyOgixTCxXeae7QlWExajkdEk": {
-              "Type": "AWS::Lambda::Version",
-              "DeletionPolicy": "Retain",
-              "Properties": {
-                "FunctionName": {
-                  "Ref": "PreSignUpLambdaFunction"
-                },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-              }
-            },
-            "WsConnectLambdaVersionf866A0bjy7vI2bO70gINdzkmR425oowXmJUyhPM": {
-              "Type": "AWS::Lambda::Version",
-              "DeletionPolicy": "Retain",
-              "Properties": {
-                "FunctionName": {
-                  "Ref": "WsConnectLambdaFunction"
-                },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-              }
-            },
-            "WsDisconnectLambdaVersionBMYN9HPPMjLy0GPuBbggQRCjUGcd2pdsqe1hidEM": {
+            "WsDisconnectLambdaVersionjD9say63GiJZT7VvErEiGEfoK39deaxBbGRSQtcuS9I": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "WsDisconnectLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
-            "WsDefaultLambdaVersion7ZA59D7WOhWf7xSW09h65g1kzIezJl7FKZ6paNP4IVs": {
+            "JoinClubLambdaVersionuluwVLxId2PtOXIjqczb4NMwzs7pVRmCYHRaW4pXk": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "JoinClubLambdaFunction"
+                },
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+              }
+            },
+            "WsDefaultLambdaVersionhOuaTj6DiEYVPlJN1a4plVKCt0Kk0hOb8qj2Pt4U7bM": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "WsDefaultLambdaFunction"
                 },
-                "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+              }
+            },
+            "WsConnectLambdaVersionMc49omLaHKeGTheXXRX8pUKIOaEjlxEcqhhvlYY0": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "WsConnectLambdaFunction"
+                },
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+              }
+            },
+            "PreSignUpLambdaVersionRa18PyRLm6GgkZzBTWyIO5SHqkISF1CSEuLUwkmqc": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "PreSignUpLambdaFunction"
+                },
+                "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
               }
             },
             "ApiGatewayRestApi": {
@@ -2101,7 +2101,7 @@
                 "ListMembersLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1758441576410": {
+            "ApiGatewayDeployment1758442838625": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -3004,148 +3004,148 @@
                 "Name": "sls-tennis-club-tracker-dev-ServerlessDeploymentBucketName"
               }
             },
-            "GetClubsLambdaFunctionQualifiedArn": {
-              "Description": "Current Lambda function version",
-              "Value": {
-                "Ref": "GetClubsLambdaVersionaHmlp3PuL50sfJGC4wUCzwcsz7t5IOtuh9GMoLXDqE"
-              },
-              "Export": {
-                "Name": "sls-tennis-club-tracker-dev-GetClubsLambdaFunctionQualifiedArn"
-              }
-            },
-            "GetMatchLambdaFunctionQualifiedArn": {
-              "Description": "Current Lambda function version",
-              "Value": {
-                "Ref": "GetMatchLambdaVersionhVnhV0ZAy7yl7qy4bIb9EMuYMdnVcdjgHXcUhVTJcs"
-              },
-              "Export": {
-                "Name": "sls-tennis-club-tracker-dev-GetMatchLambdaFunctionQualifiedArn"
-              }
-            },
-            "DeleteClubLambdaFunctionQualifiedArn": {
-              "Description": "Current Lambda function version",
-              "Value": {
-                "Ref": "DeleteClubLambdaVersion8KPvphgwysagbG11OPTEfyRMFPpr21ExuEBKANyxOL4"
-              },
-              "Export": {
-                "Name": "sls-tennis-club-tracker-dev-DeleteClubLambdaFunctionQualifiedArn"
-              }
-            },
             "CreateClubLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "CreateClubLambdaVersionli3ZWkBRFRtJjDgYmKnQ85H8HfM7xZ4GNXY6YucB9Y"
+                "Ref": "CreateClubLambdaVersionct0IaZC6zFwaO5fFsBIhFZP9oZSncn7ImmMVhL67TI"
               },
               "Export": {
                 "Name": "sls-tennis-club-tracker-dev-CreateClubLambdaFunctionQualifiedArn"
               }
             },
-            "UpdateScoreLambdaFunctionQualifiedArn": {
+            "GetClubsLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "UpdateScoreLambdaVersionVkz84E9I5B02QF6S3BAoxsiKN55ZKDDdCpSWmNvrc"
+                "Ref": "GetClubsLambdaVersionaN7fy0xORcMJDeEqp3bWhhDyDiBALnDgczMW31TML0"
               },
               "Export": {
-                "Name": "sls-tennis-club-tracker-dev-UpdateScoreLambdaFunctionQualifiedArn"
-              }
-            },
-            "GetMeLambdaFunctionQualifiedArn": {
-              "Description": "Current Lambda function version",
-              "Value": {
-                "Ref": "GetMeLambdaVersionSHqYiuZV2WPlT4RstjXjjGWe06VlDypI5c5KYYkg2rk"
-              },
-              "Export": {
-                "Name": "sls-tennis-club-tracker-dev-GetMeLambdaFunctionQualifiedArn"
+                "Name": "sls-tennis-club-tracker-dev-GetClubsLambdaFunctionQualifiedArn"
               }
             },
             "CreateMatchLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "CreateMatchLambdaVersionfjk7yizpq8YuyEQmrcCXhJ01O9ecrBAzWlQdpTIoIU"
+                "Ref": "CreateMatchLambdaVersionwmkqpoBJhnI25Cq9X9ZvhsvJ8WvLTqkDXAIxmpUxo"
               },
               "Export": {
                 "Name": "sls-tennis-club-tracker-dev-CreateMatchLambdaFunctionQualifiedArn"
               }
             },
+            "DeleteClubLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "DeleteClubLambdaVersion5LcOe6w3qFyfDK2NoFrb4661qP7zO8BK3CrVNHeeyg"
+              },
+              "Export": {
+                "Name": "sls-tennis-club-tracker-dev-DeleteClubLambdaFunctionQualifiedArn"
+              }
+            },
+            "GetMatchLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "GetMatchLambdaVersion9sY08c54HCPegivDFgH3ra4xxestqQxJlYXXUReztc"
+              },
+              "Export": {
+                "Name": "sls-tennis-club-tracker-dev-GetMatchLambdaFunctionQualifiedArn"
+              }
+            },
+            "UpdateScoreLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "UpdateScoreLambdaVersionrHOp994yXo216RNe2Pqn6N9xIohpcsYa7r2rcoGLfs"
+              },
+              "Export": {
+                "Name": "sls-tennis-club-tracker-dev-UpdateScoreLambdaFunctionQualifiedArn"
+              }
+            },
             "ListMatchesLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ListMatchesLambdaVersionGhUZyhpDjr45ZjEM3RZw4q89bSxnqLvDX93DwM8og"
+                "Ref": "ListMatchesLambdaVersion3fHY78sc6nzYVrhF41Yg0GOpT2AneiYkOT3L0plQ"
               },
               "Export": {
                 "Name": "sls-tennis-club-tracker-dev-ListMatchesLambdaFunctionQualifiedArn"
               }
             },
-            "UpdateProfileLambdaFunctionQualifiedArn": {
+            "GetMeLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "UpdateProfileLambdaVersionZ4C6lA7aqRmBhDQAAvr4ScVSWOZXPh6lk7DnBaqxarY"
+                "Ref": "GetMeLambdaVersion65WFSST83TOPmH5gpk8XQZTff0e8GPNgYlcaqjPto"
               },
               "Export": {
-                "Name": "sls-tennis-club-tracker-dev-UpdateProfileLambdaFunctionQualifiedArn"
+                "Name": "sls-tennis-club-tracker-dev-GetMeLambdaFunctionQualifiedArn"
               }
             },
             "FinalizeMatchLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "FinalizeMatchLambdaVersion0fZ7wOKH4JddNxagKOv8a8PyME4rLnGMgCyj0IhTQ2s"
+                "Ref": "FinalizeMatchLambdaVersionnWclLDrfSeANwtmXnYdD1PS2mhDVLR6yMBxgRc1ayek"
               },
               "Export": {
                 "Name": "sls-tennis-club-tracker-dev-FinalizeMatchLambdaFunctionQualifiedArn"
               }
             },
+            "UpdateProfileLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "UpdateProfileLambdaVersionc8FC50ByTmYRf8I19oj7NuiBiFiPuEMltyi0bMhEE"
+              },
+              "Export": {
+                "Name": "sls-tennis-club-tracker-dev-UpdateProfileLambdaFunctionQualifiedArn"
+              }
+            },
             "ListMembersLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ListMembersLambdaVersionKo1hBrgZ3nNgS2OZHqjY9PQFmuaxiByHp7FYpVovGgg"
+                "Ref": "ListMembersLambdaVersionccQXT5JYAlHvo2Oqp7pilqmLdzxc0GCJVKjwKuU2bQ"
               },
               "Export": {
                 "Name": "sls-tennis-club-tracker-dev-ListMembersLambdaFunctionQualifiedArn"
               }
             },
-            "JoinClubLambdaFunctionQualifiedArn": {
-              "Description": "Current Lambda function version",
-              "Value": {
-                "Ref": "JoinClubLambdaVersionhT7vZtEr6vGTHhFFWtFTVTWleoUq3WQ5ZT5D0T247JA"
-              },
-              "Export": {
-                "Name": "sls-tennis-club-tracker-dev-JoinClubLambdaFunctionQualifiedArn"
-              }
-            },
-            "PreSignUpLambdaFunctionQualifiedArn": {
-              "Description": "Current Lambda function version",
-              "Value": {
-                "Ref": "PreSignUpLambdaVersioncAdcPHZYmNGk9F1ukyOgixTCxXeae7QlWExajkdEk"
-              },
-              "Export": {
-                "Name": "sls-tennis-club-tracker-dev-PreSignUpLambdaFunctionQualifiedArn"
-              }
-            },
-            "WsConnectLambdaFunctionQualifiedArn": {
-              "Description": "Current Lambda function version",
-              "Value": {
-                "Ref": "WsConnectLambdaVersionf866A0bjy7vI2bO70gINdzkmR425oowXmJUyhPM"
-              },
-              "Export": {
-                "Name": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
-              }
-            },
             "WsDisconnectLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "WsDisconnectLambdaVersionBMYN9HPPMjLy0GPuBbggQRCjUGcd2pdsqe1hidEM"
+                "Ref": "WsDisconnectLambdaVersionjD9say63GiJZT7VvErEiGEfoK39deaxBbGRSQtcuS9I"
               },
               "Export": {
                 "Name": "sls-tennis-club-tracker-dev-WsDisconnectLambdaFunctionQualifiedArn"
               }
             },
+            "JoinClubLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "JoinClubLambdaVersionuluwVLxId2PtOXIjqczb4NMwzs7pVRmCYHRaW4pXk"
+              },
+              "Export": {
+                "Name": "sls-tennis-club-tracker-dev-JoinClubLambdaFunctionQualifiedArn"
+              }
+            },
             "WsDefaultLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "WsDefaultLambdaVersion7ZA59D7WOhWf7xSW09h65g1kzIezJl7FKZ6paNP4IVs"
+                "Ref": "WsDefaultLambdaVersionhOuaTj6DiEYVPlJN1a4plVKCt0Kk0hOb8qj2Pt4U7bM"
               },
               "Export": {
                 "Name": "sls-tennis-club-tracker-dev-WsDefaultLambdaFunctionQualifiedArn"
+              }
+            },
+            "WsConnectLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "WsConnectLambdaVersionMc49omLaHKeGTheXXRX8pUKIOaEjlxEcqhhvlYY0"
+              },
+              "Export": {
+                "Name": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
+              }
+            },
+            "PreSignUpLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "PreSignUpLambdaVersionRa18PyRLm6GgkZzBTWyIO5SHqkISF1CSEuLUwkmqc"
+              },
+              "Export": {
+                "Name": "sls-tennis-club-tracker-dev-PreSignUpLambdaFunctionQualifiedArn"
               }
             },
             "ServiceEndpoint": {
@@ -3215,7 +3215,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/tennis-club-tracker/dev/code-artifacts",
         "deploymentBucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-        "artifactDirectoryName": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z"
+        "artifactDirectoryName": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z"
       },
       "functions": {
         "getClubs": {
@@ -3253,7 +3253,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "GetClubsLambdaVersionaHmlp3PuL50sfJGC4wUCzwcsz7t5IOtuh9GMoLXDqE"
+          "versionLogicalId": "GetClubsLambdaVersionaN7fy0xORcMJDeEqp3bWhhDyDiBALnDgczMW31TML0"
         },
         "createClub": {
           "handler": "handlers/clubs.create",
@@ -3290,7 +3290,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "CreateClubLambdaVersionli3ZWkBRFRtJjDgYmKnQ85H8HfM7xZ4GNXY6YucB9Y"
+          "versionLogicalId": "CreateClubLambdaVersionct0IaZC6zFwaO5fFsBIhFZP9oZSncn7ImmMVhL67TI"
         },
         "createMatch": {
           "handler": "handlers/matches.create",
@@ -3327,7 +3327,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "CreateMatchLambdaVersionfjk7yizpq8YuyEQmrcCXhJ01O9ecrBAzWlQdpTIoIU"
+          "versionLogicalId": "CreateMatchLambdaVersionwmkqpoBJhnI25Cq9X9ZvhsvJ8WvLTqkDXAIxmpUxo"
         },
         "deleteClub": {
           "handler": "handlers/clubs_delete.handler",
@@ -3364,7 +3364,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "DeleteClubLambdaVersion8KPvphgwysagbG11OPTEfyRMFPpr21ExuEBKANyxOL4"
+          "versionLogicalId": "DeleteClubLambdaVersion5LcOe6w3qFyfDK2NoFrb4661qP7zO8BK3CrVNHeeyg"
         },
         "listMatches": {
           "handler": "handlers/matches.list",
@@ -3401,7 +3401,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "ListMatchesLambdaVersionGhUZyhpDjr45ZjEM3RZw4q89bSxnqLvDX93DwM8og"
+          "versionLogicalId": "ListMatchesLambdaVersion3fHY78sc6nzYVrhF41Yg0GOpT2AneiYkOT3L0plQ"
         },
         "getMatch": {
           "handler": "handlers/matches.get",
@@ -3438,7 +3438,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "GetMatchLambdaVersionhVnhV0ZAy7yl7qy4bIb9EMuYMdnVcdjgHXcUhVTJcs"
+          "versionLogicalId": "GetMatchLambdaVersion9sY08c54HCPegivDFgH3ra4xxestqQxJlYXXUReztc"
         },
         "updateScore": {
           "handler": "handlers/matches.score",
@@ -3475,7 +3475,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "UpdateScoreLambdaVersionVkz84E9I5B02QF6S3BAoxsiKN55ZKDDdCpSWmNvrc"
+          "versionLogicalId": "UpdateScoreLambdaVersionrHOp994yXo216RNe2Pqn6N9xIohpcsYa7r2rcoGLfs"
         },
         "finalizeMatch": {
           "handler": "handlers/matches.finalize",
@@ -3512,7 +3512,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "FinalizeMatchLambdaVersion0fZ7wOKH4JddNxagKOv8a8PyME4rLnGMgCyj0IhTQ2s"
+          "versionLogicalId": "FinalizeMatchLambdaVersionnWclLDrfSeANwtmXnYdD1PS2mhDVLR6yMBxgRc1ayek"
         },
         "getMe": {
           "handler": "handlers/users.getMe",
@@ -3549,7 +3549,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "GetMeLambdaVersionSHqYiuZV2WPlT4RstjXjjGWe06VlDypI5c5KYYkg2rk"
+          "versionLogicalId": "GetMeLambdaVersion65WFSST83TOPmH5gpk8XQZTff0e8GPNgYlcaqjPto"
         },
         "updateProfile": {
           "handler": "handlers/users.updateProfile",
@@ -3586,7 +3586,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "UpdateProfileLambdaVersionZ4C6lA7aqRmBhDQAAvr4ScVSWOZXPh6lk7DnBaqxarY"
+          "versionLogicalId": "UpdateProfileLambdaVersionc8FC50ByTmYRf8I19oj7NuiBiFiPuEMltyi0bMhEE"
         },
         "joinClub": {
           "handler": "handlers/members.join",
@@ -3623,7 +3623,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "JoinClubLambdaVersionhT7vZtEr6vGTHhFFWtFTVTWleoUq3WQ5ZT5D0T247JA"
+          "versionLogicalId": "JoinClubLambdaVersionuluwVLxId2PtOXIjqczb4NMwzs7pVRmCYHRaW4pXk"
         },
         "listMembers": {
           "handler": "handlers/members.list",
@@ -3660,7 +3660,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "ListMembersLambdaVersionKo1hBrgZ3nNgS2OZHqjY9PQFmuaxiByHp7FYpVovGgg"
+          "versionLogicalId": "ListMembersLambdaVersionccQXT5JYAlHvo2Oqp7pilqmLdzxc0GCJVKjwKuU2bQ"
         },
         "preSignUp": {
           "handler": "handlers/authTriggers.preSignUp",
@@ -3673,7 +3673,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "PreSignUpLambdaVersioncAdcPHZYmNGk9F1ukyOgixTCxXeae7QlWExajkdEk"
+          "versionLogicalId": "PreSignUpLambdaVersionRa18PyRLm6GgkZzBTWyIO5SHqkISF1CSEuLUwkmqc"
         },
         "wsConnect": {
           "handler": "handlers/websocket.connect",
@@ -3692,7 +3692,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "WsConnectLambdaVersionf866A0bjy7vI2bO70gINdzkmR425oowXmJUyhPM"
+          "versionLogicalId": "WsConnectLambdaVersionMc49omLaHKeGTheXXRX8pUKIOaEjlxEcqhhvlYY0"
         },
         "wsDisconnect": {
           "handler": "handlers/websocket.disconnect",
@@ -3711,7 +3711,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "WsDisconnectLambdaVersionBMYN9HPPMjLy0GPuBbggQRCjUGcd2pdsqe1hidEM"
+          "versionLogicalId": "WsDisconnectLambdaVersionjD9say63GiJZT7VvErEiGEfoK39deaxBbGRSQtcuS9I"
         },
         "wsDefault": {
           "handler": "handlers/websocket.onMessage",
@@ -3730,7 +3730,7 @@
           "timeout": 6,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "WsDefaultLambdaVersion7ZA59D7WOhWf7xSW09h65g1kzIezJl7FKZ6paNP4IVs"
+          "versionLogicalId": "WsDefaultLambdaVersionhOuaTj6DiEYVPlJN1a4plVKCt0Kk0hOb8qj2Pt4U7bM"
         }
       },
       "resources": {
@@ -4187,7 +4187,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getClubs.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getClubs.zip"
               },
               "Handler": "handlers/clubs.get",
               "Runtime": "nodejs20.x",
@@ -4223,7 +4223,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/createClub.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/createClub.zip"
               },
               "Handler": "handlers/clubs.create",
               "Runtime": "nodejs20.x",
@@ -4259,7 +4259,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/createMatch.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/createMatch.zip"
               },
               "Handler": "handlers/matches.create",
               "Runtime": "nodejs20.x",
@@ -4295,7 +4295,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/deleteClub.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/deleteClub.zip"
               },
               "Handler": "handlers/clubs_delete.handler",
               "Runtime": "nodejs20.x",
@@ -4331,7 +4331,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/listMatches.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/listMatches.zip"
               },
               "Handler": "handlers/matches.list",
               "Runtime": "nodejs20.x",
@@ -4367,7 +4367,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getMatch.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getMatch.zip"
               },
               "Handler": "handlers/matches.get",
               "Runtime": "nodejs20.x",
@@ -4403,7 +4403,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/updateScore.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/updateScore.zip"
               },
               "Handler": "handlers/matches.score",
               "Runtime": "nodejs20.x",
@@ -4439,7 +4439,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/finalizeMatch.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/finalizeMatch.zip"
               },
               "Handler": "handlers/matches.finalize",
               "Runtime": "nodejs20.x",
@@ -4475,7 +4475,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getMe.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getMe.zip"
               },
               "Handler": "handlers/users.getMe",
               "Runtime": "nodejs20.x",
@@ -4511,7 +4511,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/updateProfile.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/updateProfile.zip"
               },
               "Handler": "handlers/users.updateProfile",
               "Runtime": "nodejs20.x",
@@ -4547,7 +4547,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/joinClub.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/joinClub.zip"
               },
               "Handler": "handlers/members.join",
               "Runtime": "nodejs20.x",
@@ -4583,7 +4583,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/listMembers.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/listMembers.zip"
               },
               "Handler": "handlers/members.list",
               "Runtime": "nodejs20.x",
@@ -4619,7 +4619,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/preSignUp.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/preSignUp.zip"
               },
               "Handler": "handlers/authTriggers.preSignUp",
               "Runtime": "nodejs20.x",
@@ -4655,7 +4655,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsConnect.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsConnect.zip"
               },
               "Handler": "handlers/websocket.connect",
               "Runtime": "nodejs20.x",
@@ -4691,7 +4691,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsDisconnect.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsDisconnect.zip"
               },
               "Handler": "handlers/websocket.disconnect",
               "Runtime": "nodejs20.x",
@@ -4727,7 +4727,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-                "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsDefault.zip"
+                "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsDefault.zip"
               },
               "Handler": "handlers/websocket.onMessage",
               "Runtime": "nodejs20.x",
@@ -4758,164 +4758,164 @@
               "WsDefaultLogGroup"
             ]
           },
-          "GetClubsLambdaVersionaHmlp3PuL50sfJGC4wUCzwcsz7t5IOtuh9GMoLXDqE": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetClubsLambdaFunction"
-              },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-            }
-          },
-          "GetMatchLambdaVersionhVnhV0ZAy7yl7qy4bIb9EMuYMdnVcdjgHXcUhVTJcs": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetMatchLambdaFunction"
-              },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-            }
-          },
-          "DeleteClubLambdaVersion8KPvphgwysagbG11OPTEfyRMFPpr21ExuEBKANyxOL4": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "DeleteClubLambdaFunction"
-              },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-            }
-          },
-          "CreateClubLambdaVersionli3ZWkBRFRtJjDgYmKnQ85H8HfM7xZ4GNXY6YucB9Y": {
+          "CreateClubLambdaVersionct0IaZC6zFwaO5fFsBIhFZP9oZSncn7ImmMVhL67TI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateClubLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
-          "UpdateScoreLambdaVersionVkz84E9I5B02QF6S3BAoxsiKN55ZKDDdCpSWmNvrc": {
+          "GetClubsLambdaVersionaN7fy0xORcMJDeEqp3bWhhDyDiBALnDgczMW31TML0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "UpdateScoreLambdaFunction"
+                "Ref": "GetClubsLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
-          "GetMeLambdaVersionSHqYiuZV2WPlT4RstjXjjGWe06VlDypI5c5KYYkg2rk": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetMeLambdaFunction"
-              },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-            }
-          },
-          "CreateMatchLambdaVersionfjk7yizpq8YuyEQmrcCXhJ01O9ecrBAzWlQdpTIoIU": {
+          "CreateMatchLambdaVersionwmkqpoBJhnI25Cq9X9ZvhsvJ8WvLTqkDXAIxmpUxo": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateMatchLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
-          "ListMatchesLambdaVersionGhUZyhpDjr45ZjEM3RZw4q89bSxnqLvDX93DwM8og": {
+          "DeleteClubLambdaVersion5LcOe6w3qFyfDK2NoFrb4661qP7zO8BK3CrVNHeeyg": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "DeleteClubLambdaFunction"
+              },
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+            }
+          },
+          "GetMatchLambdaVersion9sY08c54HCPegivDFgH3ra4xxestqQxJlYXXUReztc": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GetMatchLambdaFunction"
+              },
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+            }
+          },
+          "UpdateScoreLambdaVersionrHOp994yXo216RNe2Pqn6N9xIohpcsYa7r2rcoGLfs": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UpdateScoreLambdaFunction"
+              },
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+            }
+          },
+          "ListMatchesLambdaVersion3fHY78sc6nzYVrhF41Yg0GOpT2AneiYkOT3L0plQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListMatchesLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
-          "UpdateProfileLambdaVersionZ4C6lA7aqRmBhDQAAvr4ScVSWOZXPh6lk7DnBaqxarY": {
+          "GetMeLambdaVersion65WFSST83TOPmH5gpk8XQZTff0e8GPNgYlcaqjPto": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "UpdateProfileLambdaFunction"
+                "Ref": "GetMeLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
-          "FinalizeMatchLambdaVersion0fZ7wOKH4JddNxagKOv8a8PyME4rLnGMgCyj0IhTQ2s": {
+          "FinalizeMatchLambdaVersionnWclLDrfSeANwtmXnYdD1PS2mhDVLR6yMBxgRc1ayek": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "FinalizeMatchLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
-          "ListMembersLambdaVersionKo1hBrgZ3nNgS2OZHqjY9PQFmuaxiByHp7FYpVovGgg": {
+          "UpdateProfileLambdaVersionc8FC50ByTmYRf8I19oj7NuiBiFiPuEMltyi0bMhEE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UpdateProfileLambdaFunction"
+              },
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+            }
+          },
+          "ListMembersLambdaVersionccQXT5JYAlHvo2Oqp7pilqmLdzxc0GCJVKjwKuU2bQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListMembersLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
-          "JoinClubLambdaVersionhT7vZtEr6vGTHhFFWtFTVTWleoUq3WQ5ZT5D0T247JA": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "JoinClubLambdaFunction"
-              },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-            }
-          },
-          "PreSignUpLambdaVersioncAdcPHZYmNGk9F1ukyOgixTCxXeae7QlWExajkdEk": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "PreSignUpLambdaFunction"
-              },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-            }
-          },
-          "WsConnectLambdaVersionf866A0bjy7vI2bO70gINdzkmR425oowXmJUyhPM": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "WsConnectLambdaFunction"
-              },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-            }
-          },
-          "WsDisconnectLambdaVersionBMYN9HPPMjLy0GPuBbggQRCjUGcd2pdsqe1hidEM": {
+          "WsDisconnectLambdaVersionjD9say63GiJZT7VvErEiGEfoK39deaxBbGRSQtcuS9I": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "WsDisconnectLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
-          "WsDefaultLambdaVersion7ZA59D7WOhWf7xSW09h65g1kzIezJl7FKZ6paNP4IVs": {
+          "JoinClubLambdaVersionuluwVLxId2PtOXIjqczb4NMwzs7pVRmCYHRaW4pXk": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "JoinClubLambdaFunction"
+              },
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+            }
+          },
+          "WsDefaultLambdaVersionhOuaTj6DiEYVPlJN1a4plVKCt0Kk0hOb8qj2Pt4U7bM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "WsDefaultLambdaFunction"
               },
-              "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+            }
+          },
+          "WsConnectLambdaVersionMc49omLaHKeGTheXXRX8pUKIOaEjlxEcqhhvlYY0": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "WsConnectLambdaFunction"
+              },
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+            }
+          },
+          "PreSignUpLambdaVersionRa18PyRLm6GgkZzBTWyIO5SHqkISF1CSEuLUwkmqc": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "PreSignUpLambdaFunction"
+              },
+              "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
             }
           },
           "ApiGatewayRestApi": {
@@ -6007,7 +6007,7 @@
               "ListMembersLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1758441576410": {
+          "ApiGatewayDeployment1758442838625": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -6910,148 +6910,148 @@
               "Name": "sls-tennis-club-tracker-dev-ServerlessDeploymentBucketName"
             }
           },
-          "GetClubsLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetClubsLambdaVersionaHmlp3PuL50sfJGC4wUCzwcsz7t5IOtuh9GMoLXDqE"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-GetClubsLambdaFunctionQualifiedArn"
-            }
-          },
-          "GetMatchLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetMatchLambdaVersionhVnhV0ZAy7yl7qy4bIb9EMuYMdnVcdjgHXcUhVTJcs"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-GetMatchLambdaFunctionQualifiedArn"
-            }
-          },
-          "DeleteClubLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "DeleteClubLambdaVersion8KPvphgwysagbG11OPTEfyRMFPpr21ExuEBKANyxOL4"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-DeleteClubLambdaFunctionQualifiedArn"
-            }
-          },
           "CreateClubLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateClubLambdaVersionli3ZWkBRFRtJjDgYmKnQ85H8HfM7xZ4GNXY6YucB9Y"
+              "Ref": "CreateClubLambdaVersionct0IaZC6zFwaO5fFsBIhFZP9oZSncn7ImmMVhL67TI"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-CreateClubLambdaFunctionQualifiedArn"
             }
           },
-          "UpdateScoreLambdaFunctionQualifiedArn": {
+          "GetClubsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateScoreLambdaVersionVkz84E9I5B02QF6S3BAoxsiKN55ZKDDdCpSWmNvrc"
+              "Ref": "GetClubsLambdaVersionaN7fy0xORcMJDeEqp3bWhhDyDiBALnDgczMW31TML0"
             },
             "Export": {
-              "Name": "sls-tennis-club-tracker-dev-UpdateScoreLambdaFunctionQualifiedArn"
-            }
-          },
-          "GetMeLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetMeLambdaVersionSHqYiuZV2WPlT4RstjXjjGWe06VlDypI5c5KYYkg2rk"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-GetMeLambdaFunctionQualifiedArn"
+              "Name": "sls-tennis-club-tracker-dev-GetClubsLambdaFunctionQualifiedArn"
             }
           },
           "CreateMatchLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateMatchLambdaVersionfjk7yizpq8YuyEQmrcCXhJ01O9ecrBAzWlQdpTIoIU"
+              "Ref": "CreateMatchLambdaVersionwmkqpoBJhnI25Cq9X9ZvhsvJ8WvLTqkDXAIxmpUxo"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-CreateMatchLambdaFunctionQualifiedArn"
             }
           },
+          "DeleteClubLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "DeleteClubLambdaVersion5LcOe6w3qFyfDK2NoFrb4661qP7zO8BK3CrVNHeeyg"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-DeleteClubLambdaFunctionQualifiedArn"
+            }
+          },
+          "GetMatchLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "GetMatchLambdaVersion9sY08c54HCPegivDFgH3ra4xxestqQxJlYXXUReztc"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-GetMatchLambdaFunctionQualifiedArn"
+            }
+          },
+          "UpdateScoreLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "UpdateScoreLambdaVersionrHOp994yXo216RNe2Pqn6N9xIohpcsYa7r2rcoGLfs"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-UpdateScoreLambdaFunctionQualifiedArn"
+            }
+          },
           "ListMatchesLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListMatchesLambdaVersionGhUZyhpDjr45ZjEM3RZw4q89bSxnqLvDX93DwM8og"
+              "Ref": "ListMatchesLambdaVersion3fHY78sc6nzYVrhF41Yg0GOpT2AneiYkOT3L0plQ"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-ListMatchesLambdaFunctionQualifiedArn"
             }
           },
-          "UpdateProfileLambdaFunctionQualifiedArn": {
+          "GetMeLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateProfileLambdaVersionZ4C6lA7aqRmBhDQAAvr4ScVSWOZXPh6lk7DnBaqxarY"
+              "Ref": "GetMeLambdaVersion65WFSST83TOPmH5gpk8XQZTff0e8GPNgYlcaqjPto"
             },
             "Export": {
-              "Name": "sls-tennis-club-tracker-dev-UpdateProfileLambdaFunctionQualifiedArn"
+              "Name": "sls-tennis-club-tracker-dev-GetMeLambdaFunctionQualifiedArn"
             }
           },
           "FinalizeMatchLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "FinalizeMatchLambdaVersion0fZ7wOKH4JddNxagKOv8a8PyME4rLnGMgCyj0IhTQ2s"
+              "Ref": "FinalizeMatchLambdaVersionnWclLDrfSeANwtmXnYdD1PS2mhDVLR6yMBxgRc1ayek"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-FinalizeMatchLambdaFunctionQualifiedArn"
             }
           },
+          "UpdateProfileLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "UpdateProfileLambdaVersionc8FC50ByTmYRf8I19oj7NuiBiFiPuEMltyi0bMhEE"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-UpdateProfileLambdaFunctionQualifiedArn"
+            }
+          },
           "ListMembersLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListMembersLambdaVersionKo1hBrgZ3nNgS2OZHqjY9PQFmuaxiByHp7FYpVovGgg"
+              "Ref": "ListMembersLambdaVersionccQXT5JYAlHvo2Oqp7pilqmLdzxc0GCJVKjwKuU2bQ"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-ListMembersLambdaFunctionQualifiedArn"
             }
           },
-          "JoinClubLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "JoinClubLambdaVersionhT7vZtEr6vGTHhFFWtFTVTWleoUq3WQ5ZT5D0T247JA"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-JoinClubLambdaFunctionQualifiedArn"
-            }
-          },
-          "PreSignUpLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "PreSignUpLambdaVersioncAdcPHZYmNGk9F1ukyOgixTCxXeae7QlWExajkdEk"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-PreSignUpLambdaFunctionQualifiedArn"
-            }
-          },
-          "WsConnectLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "WsConnectLambdaVersionf866A0bjy7vI2bO70gINdzkmR425oowXmJUyhPM"
-            },
-            "Export": {
-              "Name": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
-            }
-          },
           "WsDisconnectLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "WsDisconnectLambdaVersionBMYN9HPPMjLy0GPuBbggQRCjUGcd2pdsqe1hidEM"
+              "Ref": "WsDisconnectLambdaVersionjD9say63GiJZT7VvErEiGEfoK39deaxBbGRSQtcuS9I"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-WsDisconnectLambdaFunctionQualifiedArn"
             }
           },
+          "JoinClubLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "JoinClubLambdaVersionuluwVLxId2PtOXIjqczb4NMwzs7pVRmCYHRaW4pXk"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-JoinClubLambdaFunctionQualifiedArn"
+            }
+          },
           "WsDefaultLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "WsDefaultLambdaVersion7ZA59D7WOhWf7xSW09h65g1kzIezJl7FKZ6paNP4IVs"
+              "Ref": "WsDefaultLambdaVersionhOuaTj6DiEYVPlJN1a4plVKCt0Kk0hOb8qj2Pt4U7bM"
             },
             "Export": {
               "Name": "sls-tennis-club-tracker-dev-WsDefaultLambdaFunctionQualifiedArn"
+            }
+          },
+          "WsConnectLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "WsConnectLambdaVersionMc49omLaHKeGTheXXRX8pUKIOaEjlxEcqhhvlYY0"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
+            }
+          },
+          "PreSignUpLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "PreSignUpLambdaVersionRa18PyRLm6GgkZzBTWyIO5SHqkISF1CSEuLUwkmqc"
+            },
+            "Export": {
+              "Name": "sls-tennis-club-tracker-dev-PreSignUpLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -7135,56 +7135,56 @@
     "serviceProviderAwsCfStackName": "tennis-club-tracker-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-west-2:047212758498:stack/tennis-club-tracker-dev/ff704d60-75ac-11f0-8fa9-0a13a4d37ce1",
     "serviceProviderAwsCfStackCreated": "2025-08-10T05:43:53.223Z",
-    "serviceProviderAwsCfStackUpdated": "2025-09-21T07:45:47.702Z",
+    "serviceProviderAwsCfStackUpdated": "2025-09-21T08:18:17.813Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "DeleteClubLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-deleteClub:3",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-deleteClub:9",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-DeleteClubLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "WsDefaultLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-wsDefault:11",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-wsDefault:17",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-WsDefaultLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "WsDisconnectLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-wsDisconnect:11",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-wsDisconnect:17",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-WsDisconnectLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "JoinClubLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-joinClub:7",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-joinClub:13",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-JoinClubLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "ListMembersLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-listMembers:7",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-listMembers:13",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-ListMembersLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "GetMeLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-getMe:7",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-getMe:13",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-GetMeLambdaFunctionQualifiedArn"
       },
       {
-        "OutputKey": "WsConnectLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-wsConnect:11",
-        "Description": "Current Lambda function version",
-        "ExportName": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
-      },
-      {
         "OutputKey": "PreSignUpLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-preSignUp:7",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-preSignUp:13",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-PreSignUpLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "WsConnectLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-wsConnect:17",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "ServerlessDeploymentBucketName",
@@ -7193,43 +7193,43 @@
       },
       {
         "OutputKey": "GetClubsLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-getClubs:11",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-getClubs:17",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-GetClubsLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "UpdateProfileLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-updateProfile:7",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-updateProfile:13",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-UpdateProfileLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "CreateMatchLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-createMatch:11",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-createMatch:17",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-CreateMatchLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "UpdateScoreLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-updateScore:8",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-updateScore:14",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-UpdateScoreLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "GetMatchLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-getMatch:8",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-getMatch:14",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-GetMatchLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "ListMatchesLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-listMatches:11",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-listMatches:17",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-ListMatchesLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "CreateClubLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-createClub:10",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-createClub:16",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-CreateClubLambdaFunctionQualifiedArn"
       },
@@ -7247,7 +7247,7 @@
       },
       {
         "OutputKey": "FinalizeMatchLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-finalizeMatch:8",
+        "OutputValue": "arn:aws:lambda:us-west-2:047212758498:function:tennis-club-tracker-dev-finalizeMatch:14",
         "Description": "Current Lambda function version",
         "ExportName": "sls-tennis-club-tracker-dev-FinalizeMatchLambdaFunctionQualifiedArn"
       }
@@ -7475,7 +7475,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getClubs.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getClubs.zip"
             },
             "Handler": "handlers/clubs.get",
             "Runtime": "nodejs20.x",
@@ -7511,7 +7511,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/createClub.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/createClub.zip"
             },
             "Handler": "handlers/clubs.create",
             "Runtime": "nodejs20.x",
@@ -7547,7 +7547,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/createMatch.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/createMatch.zip"
             },
             "Handler": "handlers/matches.create",
             "Runtime": "nodejs20.x",
@@ -7583,7 +7583,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/deleteClub.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/deleteClub.zip"
             },
             "Handler": "handlers/clubs_delete.handler",
             "Runtime": "nodejs20.x",
@@ -7619,7 +7619,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/listMatches.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/listMatches.zip"
             },
             "Handler": "handlers/matches.list",
             "Runtime": "nodejs20.x",
@@ -7655,7 +7655,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getMatch.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getMatch.zip"
             },
             "Handler": "handlers/matches.get",
             "Runtime": "nodejs20.x",
@@ -7691,7 +7691,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/updateScore.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/updateScore.zip"
             },
             "Handler": "handlers/matches.score",
             "Runtime": "nodejs20.x",
@@ -7727,7 +7727,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/finalizeMatch.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/finalizeMatch.zip"
             },
             "Handler": "handlers/matches.finalize",
             "Runtime": "nodejs20.x",
@@ -7763,7 +7763,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/getMe.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/getMe.zip"
             },
             "Handler": "handlers/users.getMe",
             "Runtime": "nodejs20.x",
@@ -7799,7 +7799,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/updateProfile.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/updateProfile.zip"
             },
             "Handler": "handlers/users.updateProfile",
             "Runtime": "nodejs20.x",
@@ -7835,7 +7835,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/joinClub.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/joinClub.zip"
             },
             "Handler": "handlers/members.join",
             "Runtime": "nodejs20.x",
@@ -7871,7 +7871,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/listMembers.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/listMembers.zip"
             },
             "Handler": "handlers/members.list",
             "Runtime": "nodejs20.x",
@@ -7907,7 +7907,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/preSignUp.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/preSignUp.zip"
             },
             "Handler": "handlers/authTriggers.preSignUp",
             "Runtime": "nodejs20.x",
@@ -7943,7 +7943,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsConnect.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsConnect.zip"
             },
             "Handler": "handlers/websocket.connect",
             "Runtime": "nodejs20.x",
@@ -7979,7 +7979,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsDisconnect.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsDisconnect.zip"
             },
             "Handler": "handlers/websocket.disconnect",
             "Runtime": "nodejs20.x",
@@ -8015,7 +8015,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-west-2-50484812-2351",
-              "S3Key": "serverless/tennis-club-tracker/dev/1758441593341-2025-09-21T07:59:53.341Z/wsDefault.zip"
+              "S3Key": "serverless/tennis-club-tracker/dev/1758442856463-2025-09-21T08:20:56.463Z/wsDefault.zip"
             },
             "Handler": "handlers/websocket.onMessage",
             "Runtime": "nodejs20.x",
@@ -8046,164 +8046,164 @@
             "WsDefaultLogGroup"
           ]
         },
-        "GetClubsLambdaVersionaHmlp3PuL50sfJGC4wUCzwcsz7t5IOtuh9GMoLXDqE": {
-          "Type": "AWS::Lambda::Version",
-          "DeletionPolicy": "Retain",
-          "Properties": {
-            "FunctionName": {
-              "Ref": "GetClubsLambdaFunction"
-            },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-          }
-        },
-        "GetMatchLambdaVersionhVnhV0ZAy7yl7qy4bIb9EMuYMdnVcdjgHXcUhVTJcs": {
-          "Type": "AWS::Lambda::Version",
-          "DeletionPolicy": "Retain",
-          "Properties": {
-            "FunctionName": {
-              "Ref": "GetMatchLambdaFunction"
-            },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-          }
-        },
-        "DeleteClubLambdaVersion8KPvphgwysagbG11OPTEfyRMFPpr21ExuEBKANyxOL4": {
-          "Type": "AWS::Lambda::Version",
-          "DeletionPolicy": "Retain",
-          "Properties": {
-            "FunctionName": {
-              "Ref": "DeleteClubLambdaFunction"
-            },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-          }
-        },
-        "CreateClubLambdaVersionli3ZWkBRFRtJjDgYmKnQ85H8HfM7xZ4GNXY6YucB9Y": {
+        "CreateClubLambdaVersionct0IaZC6zFwaO5fFsBIhFZP9oZSncn7ImmMVhL67TI": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "CreateClubLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
-        "UpdateScoreLambdaVersionVkz84E9I5B02QF6S3BAoxsiKN55ZKDDdCpSWmNvrc": {
+        "GetClubsLambdaVersionaN7fy0xORcMJDeEqp3bWhhDyDiBALnDgczMW31TML0": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
-              "Ref": "UpdateScoreLambdaFunction"
+              "Ref": "GetClubsLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
-        "GetMeLambdaVersionSHqYiuZV2WPlT4RstjXjjGWe06VlDypI5c5KYYkg2rk": {
-          "Type": "AWS::Lambda::Version",
-          "DeletionPolicy": "Retain",
-          "Properties": {
-            "FunctionName": {
-              "Ref": "GetMeLambdaFunction"
-            },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-          }
-        },
-        "CreateMatchLambdaVersionfjk7yizpq8YuyEQmrcCXhJ01O9ecrBAzWlQdpTIoIU": {
+        "CreateMatchLambdaVersionwmkqpoBJhnI25Cq9X9ZvhsvJ8WvLTqkDXAIxmpUxo": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "CreateMatchLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
-        "ListMatchesLambdaVersionGhUZyhpDjr45ZjEM3RZw4q89bSxnqLvDX93DwM8og": {
+        "DeleteClubLambdaVersion5LcOe6w3qFyfDK2NoFrb4661qP7zO8BK3CrVNHeeyg": {
+          "Type": "AWS::Lambda::Version",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "FunctionName": {
+              "Ref": "DeleteClubLambdaFunction"
+            },
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+          }
+        },
+        "GetMatchLambdaVersion9sY08c54HCPegivDFgH3ra4xxestqQxJlYXXUReztc": {
+          "Type": "AWS::Lambda::Version",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "FunctionName": {
+              "Ref": "GetMatchLambdaFunction"
+            },
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+          }
+        },
+        "UpdateScoreLambdaVersionrHOp994yXo216RNe2Pqn6N9xIohpcsYa7r2rcoGLfs": {
+          "Type": "AWS::Lambda::Version",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "FunctionName": {
+              "Ref": "UpdateScoreLambdaFunction"
+            },
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+          }
+        },
+        "ListMatchesLambdaVersion3fHY78sc6nzYVrhF41Yg0GOpT2AneiYkOT3L0plQ": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "ListMatchesLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
-        "UpdateProfileLambdaVersionZ4C6lA7aqRmBhDQAAvr4ScVSWOZXPh6lk7DnBaqxarY": {
+        "GetMeLambdaVersion65WFSST83TOPmH5gpk8XQZTff0e8GPNgYlcaqjPto": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
-              "Ref": "UpdateProfileLambdaFunction"
+              "Ref": "GetMeLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
-        "FinalizeMatchLambdaVersion0fZ7wOKH4JddNxagKOv8a8PyME4rLnGMgCyj0IhTQ2s": {
+        "FinalizeMatchLambdaVersionnWclLDrfSeANwtmXnYdD1PS2mhDVLR6yMBxgRc1ayek": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "FinalizeMatchLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
-        "ListMembersLambdaVersionKo1hBrgZ3nNgS2OZHqjY9PQFmuaxiByHp7FYpVovGgg": {
+        "UpdateProfileLambdaVersionc8FC50ByTmYRf8I19oj7NuiBiFiPuEMltyi0bMhEE": {
+          "Type": "AWS::Lambda::Version",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "FunctionName": {
+              "Ref": "UpdateProfileLambdaFunction"
+            },
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+          }
+        },
+        "ListMembersLambdaVersionccQXT5JYAlHvo2Oqp7pilqmLdzxc0GCJVKjwKuU2bQ": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "ListMembersLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
-        "JoinClubLambdaVersionhT7vZtEr6vGTHhFFWtFTVTWleoUq3WQ5ZT5D0T247JA": {
-          "Type": "AWS::Lambda::Version",
-          "DeletionPolicy": "Retain",
-          "Properties": {
-            "FunctionName": {
-              "Ref": "JoinClubLambdaFunction"
-            },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-          }
-        },
-        "PreSignUpLambdaVersioncAdcPHZYmNGk9F1ukyOgixTCxXeae7QlWExajkdEk": {
-          "Type": "AWS::Lambda::Version",
-          "DeletionPolicy": "Retain",
-          "Properties": {
-            "FunctionName": {
-              "Ref": "PreSignUpLambdaFunction"
-            },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-          }
-        },
-        "WsConnectLambdaVersionf866A0bjy7vI2bO70gINdzkmR425oowXmJUyhPM": {
-          "Type": "AWS::Lambda::Version",
-          "DeletionPolicy": "Retain",
-          "Properties": {
-            "FunctionName": {
-              "Ref": "WsConnectLambdaFunction"
-            },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
-          }
-        },
-        "WsDisconnectLambdaVersionBMYN9HPPMjLy0GPuBbggQRCjUGcd2pdsqe1hidEM": {
+        "WsDisconnectLambdaVersionjD9say63GiJZT7VvErEiGEfoK39deaxBbGRSQtcuS9I": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "WsDisconnectLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
-        "WsDefaultLambdaVersion7ZA59D7WOhWf7xSW09h65g1kzIezJl7FKZ6paNP4IVs": {
+        "JoinClubLambdaVersionuluwVLxId2PtOXIjqczb4NMwzs7pVRmCYHRaW4pXk": {
+          "Type": "AWS::Lambda::Version",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "FunctionName": {
+              "Ref": "JoinClubLambdaFunction"
+            },
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+          }
+        },
+        "WsDefaultLambdaVersionhOuaTj6DiEYVPlJN1a4plVKCt0Kk0hOb8qj2Pt4U7bM": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "WsDefaultLambdaFunction"
             },
-            "CodeSha256": "5mJzeubV2IsCD5fwyJPx5nIrGLURzb6rY+nbNGP7QOE="
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+          }
+        },
+        "WsConnectLambdaVersionMc49omLaHKeGTheXXRX8pUKIOaEjlxEcqhhvlYY0": {
+          "Type": "AWS::Lambda::Version",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "FunctionName": {
+              "Ref": "WsConnectLambdaFunction"
+            },
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
+          }
+        },
+        "PreSignUpLambdaVersionRa18PyRLm6GgkZzBTWyIO5SHqkISF1CSEuLUwkmqc": {
+          "Type": "AWS::Lambda::Version",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "FunctionName": {
+              "Ref": "PreSignUpLambdaFunction"
+            },
+            "CodeSha256": "ySFPG1/kUixlC3NfLFx5DviNqb6lcYbJ61wXgR8W9Hk="
           }
         },
         "ApiGatewayRestApi": {
@@ -9295,7 +9295,7 @@
             "ListMembersLambdaPermissionApiGateway"
           ]
         },
-        "ApiGatewayDeployment1758441576410": {
+        "ApiGatewayDeployment1758442838625": {
           "Type": "AWS::ApiGateway::Deployment",
           "Properties": {
             "RestApiId": {
@@ -10198,148 +10198,148 @@
             "Name": "sls-tennis-club-tracker-dev-ServerlessDeploymentBucketName"
           }
         },
-        "GetClubsLambdaFunctionQualifiedArn": {
-          "Description": "Current Lambda function version",
-          "Value": {
-            "Ref": "GetClubsLambdaVersionaHmlp3PuL50sfJGC4wUCzwcsz7t5IOtuh9GMoLXDqE"
-          },
-          "Export": {
-            "Name": "sls-tennis-club-tracker-dev-GetClubsLambdaFunctionQualifiedArn"
-          }
-        },
-        "GetMatchLambdaFunctionQualifiedArn": {
-          "Description": "Current Lambda function version",
-          "Value": {
-            "Ref": "GetMatchLambdaVersionhVnhV0ZAy7yl7qy4bIb9EMuYMdnVcdjgHXcUhVTJcs"
-          },
-          "Export": {
-            "Name": "sls-tennis-club-tracker-dev-GetMatchLambdaFunctionQualifiedArn"
-          }
-        },
-        "DeleteClubLambdaFunctionQualifiedArn": {
-          "Description": "Current Lambda function version",
-          "Value": {
-            "Ref": "DeleteClubLambdaVersion8KPvphgwysagbG11OPTEfyRMFPpr21ExuEBKANyxOL4"
-          },
-          "Export": {
-            "Name": "sls-tennis-club-tracker-dev-DeleteClubLambdaFunctionQualifiedArn"
-          }
-        },
         "CreateClubLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "CreateClubLambdaVersionli3ZWkBRFRtJjDgYmKnQ85H8HfM7xZ4GNXY6YucB9Y"
+            "Ref": "CreateClubLambdaVersionct0IaZC6zFwaO5fFsBIhFZP9oZSncn7ImmMVhL67TI"
           },
           "Export": {
             "Name": "sls-tennis-club-tracker-dev-CreateClubLambdaFunctionQualifiedArn"
           }
         },
-        "UpdateScoreLambdaFunctionQualifiedArn": {
+        "GetClubsLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "UpdateScoreLambdaVersionVkz84E9I5B02QF6S3BAoxsiKN55ZKDDdCpSWmNvrc"
+            "Ref": "GetClubsLambdaVersionaN7fy0xORcMJDeEqp3bWhhDyDiBALnDgczMW31TML0"
           },
           "Export": {
-            "Name": "sls-tennis-club-tracker-dev-UpdateScoreLambdaFunctionQualifiedArn"
-          }
-        },
-        "GetMeLambdaFunctionQualifiedArn": {
-          "Description": "Current Lambda function version",
-          "Value": {
-            "Ref": "GetMeLambdaVersionSHqYiuZV2WPlT4RstjXjjGWe06VlDypI5c5KYYkg2rk"
-          },
-          "Export": {
-            "Name": "sls-tennis-club-tracker-dev-GetMeLambdaFunctionQualifiedArn"
+            "Name": "sls-tennis-club-tracker-dev-GetClubsLambdaFunctionQualifiedArn"
           }
         },
         "CreateMatchLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "CreateMatchLambdaVersionfjk7yizpq8YuyEQmrcCXhJ01O9ecrBAzWlQdpTIoIU"
+            "Ref": "CreateMatchLambdaVersionwmkqpoBJhnI25Cq9X9ZvhsvJ8WvLTqkDXAIxmpUxo"
           },
           "Export": {
             "Name": "sls-tennis-club-tracker-dev-CreateMatchLambdaFunctionQualifiedArn"
           }
         },
+        "DeleteClubLambdaFunctionQualifiedArn": {
+          "Description": "Current Lambda function version",
+          "Value": {
+            "Ref": "DeleteClubLambdaVersion5LcOe6w3qFyfDK2NoFrb4661qP7zO8BK3CrVNHeeyg"
+          },
+          "Export": {
+            "Name": "sls-tennis-club-tracker-dev-DeleteClubLambdaFunctionQualifiedArn"
+          }
+        },
+        "GetMatchLambdaFunctionQualifiedArn": {
+          "Description": "Current Lambda function version",
+          "Value": {
+            "Ref": "GetMatchLambdaVersion9sY08c54HCPegivDFgH3ra4xxestqQxJlYXXUReztc"
+          },
+          "Export": {
+            "Name": "sls-tennis-club-tracker-dev-GetMatchLambdaFunctionQualifiedArn"
+          }
+        },
+        "UpdateScoreLambdaFunctionQualifiedArn": {
+          "Description": "Current Lambda function version",
+          "Value": {
+            "Ref": "UpdateScoreLambdaVersionrHOp994yXo216RNe2Pqn6N9xIohpcsYa7r2rcoGLfs"
+          },
+          "Export": {
+            "Name": "sls-tennis-club-tracker-dev-UpdateScoreLambdaFunctionQualifiedArn"
+          }
+        },
         "ListMatchesLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "ListMatchesLambdaVersionGhUZyhpDjr45ZjEM3RZw4q89bSxnqLvDX93DwM8og"
+            "Ref": "ListMatchesLambdaVersion3fHY78sc6nzYVrhF41Yg0GOpT2AneiYkOT3L0plQ"
           },
           "Export": {
             "Name": "sls-tennis-club-tracker-dev-ListMatchesLambdaFunctionQualifiedArn"
           }
         },
-        "UpdateProfileLambdaFunctionQualifiedArn": {
+        "GetMeLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "UpdateProfileLambdaVersionZ4C6lA7aqRmBhDQAAvr4ScVSWOZXPh6lk7DnBaqxarY"
+            "Ref": "GetMeLambdaVersion65WFSST83TOPmH5gpk8XQZTff0e8GPNgYlcaqjPto"
           },
           "Export": {
-            "Name": "sls-tennis-club-tracker-dev-UpdateProfileLambdaFunctionQualifiedArn"
+            "Name": "sls-tennis-club-tracker-dev-GetMeLambdaFunctionQualifiedArn"
           }
         },
         "FinalizeMatchLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "FinalizeMatchLambdaVersion0fZ7wOKH4JddNxagKOv8a8PyME4rLnGMgCyj0IhTQ2s"
+            "Ref": "FinalizeMatchLambdaVersionnWclLDrfSeANwtmXnYdD1PS2mhDVLR6yMBxgRc1ayek"
           },
           "Export": {
             "Name": "sls-tennis-club-tracker-dev-FinalizeMatchLambdaFunctionQualifiedArn"
           }
         },
+        "UpdateProfileLambdaFunctionQualifiedArn": {
+          "Description": "Current Lambda function version",
+          "Value": {
+            "Ref": "UpdateProfileLambdaVersionc8FC50ByTmYRf8I19oj7NuiBiFiPuEMltyi0bMhEE"
+          },
+          "Export": {
+            "Name": "sls-tennis-club-tracker-dev-UpdateProfileLambdaFunctionQualifiedArn"
+          }
+        },
         "ListMembersLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "ListMembersLambdaVersionKo1hBrgZ3nNgS2OZHqjY9PQFmuaxiByHp7FYpVovGgg"
+            "Ref": "ListMembersLambdaVersionccQXT5JYAlHvo2Oqp7pilqmLdzxc0GCJVKjwKuU2bQ"
           },
           "Export": {
             "Name": "sls-tennis-club-tracker-dev-ListMembersLambdaFunctionQualifiedArn"
           }
         },
-        "JoinClubLambdaFunctionQualifiedArn": {
-          "Description": "Current Lambda function version",
-          "Value": {
-            "Ref": "JoinClubLambdaVersionhT7vZtEr6vGTHhFFWtFTVTWleoUq3WQ5ZT5D0T247JA"
-          },
-          "Export": {
-            "Name": "sls-tennis-club-tracker-dev-JoinClubLambdaFunctionQualifiedArn"
-          }
-        },
-        "PreSignUpLambdaFunctionQualifiedArn": {
-          "Description": "Current Lambda function version",
-          "Value": {
-            "Ref": "PreSignUpLambdaVersioncAdcPHZYmNGk9F1ukyOgixTCxXeae7QlWExajkdEk"
-          },
-          "Export": {
-            "Name": "sls-tennis-club-tracker-dev-PreSignUpLambdaFunctionQualifiedArn"
-          }
-        },
-        "WsConnectLambdaFunctionQualifiedArn": {
-          "Description": "Current Lambda function version",
-          "Value": {
-            "Ref": "WsConnectLambdaVersionf866A0bjy7vI2bO70gINdzkmR425oowXmJUyhPM"
-          },
-          "Export": {
-            "Name": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
-          }
-        },
         "WsDisconnectLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "WsDisconnectLambdaVersionBMYN9HPPMjLy0GPuBbggQRCjUGcd2pdsqe1hidEM"
+            "Ref": "WsDisconnectLambdaVersionjD9say63GiJZT7VvErEiGEfoK39deaxBbGRSQtcuS9I"
           },
           "Export": {
             "Name": "sls-tennis-club-tracker-dev-WsDisconnectLambdaFunctionQualifiedArn"
           }
         },
+        "JoinClubLambdaFunctionQualifiedArn": {
+          "Description": "Current Lambda function version",
+          "Value": {
+            "Ref": "JoinClubLambdaVersionuluwVLxId2PtOXIjqczb4NMwzs7pVRmCYHRaW4pXk"
+          },
+          "Export": {
+            "Name": "sls-tennis-club-tracker-dev-JoinClubLambdaFunctionQualifiedArn"
+          }
+        },
         "WsDefaultLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "WsDefaultLambdaVersion7ZA59D7WOhWf7xSW09h65g1kzIezJl7FKZ6paNP4IVs"
+            "Ref": "WsDefaultLambdaVersionhOuaTj6DiEYVPlJN1a4plVKCt0Kk0hOb8qj2Pt4U7bM"
           },
           "Export": {
             "Name": "sls-tennis-club-tracker-dev-WsDefaultLambdaFunctionQualifiedArn"
+          }
+        },
+        "WsConnectLambdaFunctionQualifiedArn": {
+          "Description": "Current Lambda function version",
+          "Value": {
+            "Ref": "WsConnectLambdaVersionMc49omLaHKeGTheXXRX8pUKIOaEjlxEcqhhvlYY0"
+          },
+          "Export": {
+            "Name": "sls-tennis-club-tracker-dev-WsConnectLambdaFunctionQualifiedArn"
+          }
+        },
+        "PreSignUpLambdaFunctionQualifiedArn": {
+          "Description": "Current Lambda function version",
+          "Value": {
+            "Ref": "PreSignUpLambdaVersionRa18PyRLm6GgkZzBTWyIO5SHqkISF1CSEuLUwkmqc"
+          },
+          "Export": {
+            "Name": "sls-tennis-club-tracker-dev-PreSignUpLambdaFunctionQualifiedArn"
           }
         },
         "ServiceEndpoint": {
