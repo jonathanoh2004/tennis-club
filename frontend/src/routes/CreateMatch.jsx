@@ -1,113 +1,161 @@
-import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { api } from "../utils/api"; // your existing helper
+import { useState, useMemo } from "react";
+import { useNavigate, useSearchParams, Link } from "react-router-dom";
+import { api } from "../utils/api";
 
+/**
+ * CreateMatch page
+ * Expects ?clubId=... in the URL (the dashboard's "+ New Match" link already adds this)
+ */
 export default function CreateMatch() {
-  const nav = useNavigate();
-  const { search } = useLocation();
-  const qs = useMemo(() => new URLSearchParams(search), [search]);
-  const clubId = qs.get("clubId"); // e.g., club_WHdar51u
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const clubId = params.get("clubId") || "";
 
-  const [teamA1, setTeamA1] = useState("");
-  const [teamA2, setTeamA2] = useState("");
-  const [teamB1, setTeamB1] = useState("");
-  const [teamB2, setTeamB2] = useState("");
+  // form state
+  const [a1, setA1] = useState("");
+  const [a2, setA2] = useState("");
+  const [b1, setB1] = useState("");
+  const [b2, setB2] = useState("");
   const [bestOf, setBestOf] = useState(1);
-  const [saving, setSaving] = useState(false);
+
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    if (!clubId) setError("Missing clubId in URL. Use the + New Match button from a club.");
-  }, [clubId]);
+  const teamA = useMemo(
+    () => [a1, a2].map((s) => s.trim()).filter(Boolean),
+    [a1, a2]
+  );
+  const teamB = useMemo(
+    () => [b1, b2].map((s) => s.trim()).filter(Boolean),
+    [b1, b2]
+  );
 
-  async function submit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
     setError("");
 
-    if (!clubId) return;
-
-    const A = [teamA1, teamA2].filter(Boolean);
-    const B = [teamB1, teamB2].filter(Boolean);
-
-    if (A.length === 0 || B.length === 0) {
-      setError("Enter at least one player for each team.");
+    if (!clubId) {
+      setError("Missing clubId in URL. Use the + New Match button from a club.");
+      return;
+    }
+    if (teamA.length === 0 || teamB.length === 0) {
+      setError("Each team needs at least one player.");
       return;
     }
 
     const payload = {
       clubId,
-      teams: { A, B },          // <-- matches backend expectation
+      teams: { A: teamA, B: teamB },
+      // backend currently ignores bestOf, but harmless to send for future use
       bestOf: Number(bestOf) || 1,
-      startedAt: Date.now(),
     };
 
     try {
-      setSaving(true);
-      await api.post(`/matches`, payload); // api.js should add Authorization header
-      localStorage.setItem("clubId", clubId);
-      nav(`/ClubDashboard`, { replace: true });
-    } catch (e) {
-      setError(e.message || "Failed to create match");
+      setSubmitting(true);
+      const res = await api.post("/matches", payload); // attaches Bearer token automatically
+      // res is the created match
+      const matchId = res?.matchId;
+      if (matchId) {
+        // go straight to live match, or back to the dashboard—your choice:
+        navigate(`/LiveMatch/${encodeURIComponent(matchId)}`);
+      } else {
+        // fallback
+        navigate(`/ClubDashboard?clubId=${encodeURIComponent(clubId)}`);
+      }
+    } catch (err) {
+      // backend returns { message } on error; api.post throws with that message
+      setError(String(err?.message || err));
     } finally {
-      setSaving(false);
+      setSubmitting(false);
     }
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-lg font-semibold mb-4">Create Match</h1>
-      {clubId ? <p className="text-xs text-gray-500 mb-4">Club: {clubId}</p> : null}
-      {error ? (
-        <div className="mb-3 rounded-md border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-700">
+    <div className="max-w-3xl mx-auto p-4">
+      <div className="flex items-center justify-between mb-4">
+        <h1 className="text-xl font-bold">Create Match</h1>
+        <Link
+          to={`/ClubDashboard?clubId=${encodeURIComponent(clubId || "")}`}
+          className="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50"
+        >
+          Back to Club
+        </Link>
+      </div>
+
+      <p className="text-xs text-gray-600 mb-3">
+        Club: <span className="font-mono">{clubId || "(none)"}</span>
+      </p>
+
+      {error && (
+        <div className="mb-4 rounded-lg border border-red-300 bg-red-50 text-red-700 px-3 py-2">
           {error}
         </div>
-      ) : null}
+      )}
 
-      <form onSubmit={submit} className="max-w-xl space-y-4">
-        <fieldset className="border rounded-xl p-3">
+      <form onSubmit={onSubmit} className="space-y-6">
+        <fieldset className="border rounded-xl p-4">
           <legend className="text-sm font-medium">Team A</legend>
-          <div className="grid grid-cols-2 gap-2">
-            <input className="border rounded px-2 py-1" placeholder="Player 1"
-              value={teamA1} onChange={(e) => setTeamA1(e.target.value)} />
-            <input className="border rounded px-2 py-1" placeholder="Player 2 (optional)"
-              value={teamA2} onChange={(e) => setTeamA2(e.target.value)} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <input
+              value={a1}
+              onChange={(e) => setA1(e.target.value)}
+              placeholder="Player 1"
+              className="w-full rounded-lg border px-3 py-2"
+            />
+            <input
+              value={a2}
+              onChange={(e) => setA2(e.target.value)}
+              placeholder="Player 2 (optional)"
+              className="w-full rounded-lg border px-3 py-2"
+            />
           </div>
         </fieldset>
 
-        <fieldset className="border rounded-xl p-3">
+        <fieldset className="border rounded-xl p-4">
           <legend className="text-sm font-medium">Team B</legend>
-          <div className="grid grid-cols-2 gap-2">
-            <input className="border rounded px-2 py-1" placeholder="Player 1"
-              value={teamB1} onChange={(e) => setTeamB1(e.target.value)} />
-            <input className="border rounded px-2 py-1" placeholder="Player 2 (optional)"
-              value={teamB2} onChange={(e) => setTeamB2(e.target.value)} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <input
+              value={b1}
+              onChange={(e) => setB1(e.target.value)}
+              placeholder="Player 1"
+              className="w-full rounded-lg border px-3 py-2"
+            />
+            <input
+              value={b2}
+              onChange={(e) => setB2(e.target.value)}
+              placeholder="Player 2 (optional)"
+              className="w-full rounded-lg border px-3 py-2"
+            />
           </div>
         </fieldset>
 
-        <label className="block">
-          <span className="text-sm">Best Of</span>
-          <select className="mt-1 border rounded px-2 py-1"
-            value={bestOf} onChange={(e) => setBestOf(e.target.value)}>
+        <div className="flex items-center gap-3">
+          <label className="text-sm">Best Of</label>
+          <select
+            value={bestOf}
+            onChange={(e) => setBestOf(e.target.value)}
+            className="rounded-lg border px-2 py-1"
+          >
             <option value={1}>1</option>
             <option value={3}>3</option>
+            <option value={5}>5</option>
           </select>
-        </label>
+        </div>
 
-        <div className="flex gap-2">
+        <div className="flex items-center gap-3">
           <button
-            disabled={saving || !clubId || !teamA1 || !teamB1}
-            className="px-4 py-2 rounded-xl bg-black text-white disabled:opacity-50"
             type="submit"
+            disabled={submitting}
+            className="px-4 py-2 rounded-xl bg-black text-white disabled:opacity-50"
           >
-            {saving ? "Creating…" : "Create Match"}
+            {submitting ? "Creating..." : "Create Match"}
           </button>
-          <button
-            type="button"
-            className="px-4 py-2 rounded-xl border"
-            onClick={() => nav(-1)}
+          <Link
+            to={`/ClubDashboard?clubId=${encodeURIComponent(clubId || "")}`}
+            className="px-4 py-2 rounded-xl border hover:bg-gray-50"
           >
             Cancel
-          </button>
+          </Link>
         </div>
       </form>
     </div>
