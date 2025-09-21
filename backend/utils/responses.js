@@ -1,7 +1,10 @@
 // backend/utils/responses.js
+
+// Allowed origins for CORS
 const ALLOW = new Set([
   "https://tenniscluboh.com",
   "https://www.tenniscluboh.com",
+  "http://localhost:5173", // allow local dev
 ]);
 
 function corsHeaders(origin) {
@@ -9,10 +12,12 @@ function corsHeaders(origin) {
   return {
     "Access-Control-Allow-Origin": allowed,
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+    "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+    "Access-Control-Allow-Credentials": "false",
   };
 }
 
+// Success response
 export function ok(body, origin, statusCode = 200, extraHeaders = {}) {
   return {
     statusCode,
@@ -25,6 +30,7 @@ export function ok(body, origin, statusCode = 200, extraHeaders = {}) {
   };
 }
 
+// Error response
 export function bad(statusCode, message, origin, extra = {}) {
   return {
     statusCode,
@@ -33,5 +39,23 @@ export function bad(statusCode, message, origin, extra = {}) {
   };
 }
 
-// Back-compat alias (if any code still imports `err`)
+// Back-compat alias
 export const err = bad;
+
+// No content response (204)
+export function noContent(origin, extraHeaders = {}) {
+  return {
+    statusCode: 204,
+    headers: { ...corsHeaders(origin), ...extraHeaders },
+    body: "",
+  };
+}
+
+// Preflight response (for OPTIONS requests if needed)
+export function preflight(origin, extraHeaders = {}) {
+  return {
+    statusCode: 204,
+    headers: { ...corsHeaders(origin), ...extraHeaders },
+    body: "",
+  };
+}

@@ -1,18 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-const API_BASE = import.meta.env.VITE_API_BASE;
+import { api } from "../utils/api";
 
 function fmtDate(ts) {
-  try {
-    return new Date(Number(ts)).toLocaleString();
-  } catch {
-    return "-";
-  }
+  const n = Number(ts);
+  return Number.isFinite(n) ? new Date(n).toLocaleString() : "-";
 }
 
 function TeamLabel({ team }) {
-  if (!team || !Array.isArray(team)) return <span>-</span>;
+  if (!Array.isArray(team) || team.length === 0) return <span>-</span>;
   return <span className="truncate">{team.join(" & ")}</span>;
 }
 
@@ -29,24 +25,23 @@ export default function ClubDashboard() {
   const [matches, setMatches] = useState([]);
   const [matchesErr, setMatchesErr] = useState("");
 
-  // --- fetch clubs ---
+  // --- fetch clubs (uses api helper, which has fallback base URL) ---
+  const loadClubs = async () => {
+    setLoadingClubs(true);
+    setClubsErr("");
+    try {
+      const data = await api.get("/clubs");
+      setClubs(Array.isArray(data) ? data : data.items || []);
+    } catch (e) {
+      setClubsErr(String(e.message || e));
+      setClubs([]);
+    } finally {
+      setLoadingClubs(false);
+    }
+  };
+
   useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      setLoadingClubs(true);
-      setClubsErr("");
-      try {
-        const res = await fetch(`${API_BASE}/clubs`);
-        if (!res.ok) throw new Error(`GET /clubs -> ${res.status}`);
-        const data = await res.json();
-        if (!cancelled) setClubs(Array.isArray(data) ? data : data.items || []);
-      } catch (e) {
-        if (!cancelled) setClubsErr(String(e.message || e));
-      } finally {
-        if (!cancelled) setLoadingClubs(false);
-      }
-    })();
-    return () => { cancelled = true; };
+    loadClubs();
   }, []);
 
   // choose a default club if none selected
@@ -67,11 +62,8 @@ export default function ClubDashboard() {
     setLoadingMatches(true);
     setMatchesErr("");
     try {
-      const res = await fetch(`${API_BASE}/matches?clubId=${encodeURIComponent(forClubId)}`);
-      if (!res.ok) throw new Error(`GET /matches?clubId=... -> ${res.status}`);
-      const data = await res.json();
-      const items = data.items || [];
-      setMatches(items);
+      const data = await api.get(`/matches?clubId=${encodeURIComponent(forClubId)}`);
+      setMatches(data.items || []);
     } catch (e) {
       setMatchesErr(String(e.message || e));
       setMatches([]);
@@ -85,10 +77,34 @@ export default function ClubDashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clubId]);
 
+  // --- delete club ---
+  async function deleteClub() {
+    if (!clubId) return;
+    const ok = confirm("Delete this club and all its matches? This cannot be undone.");
+    if (!ok) return;
+    try {
+      await api.del(`/clubs/${encodeURIComponent(clubId)}`);
+      const nextClubs = clubs.filter((c) => c.clubId !== clubId);
+      setClubs(nextClubs);
+      const nextSelected = nextClubs[0]?.clubId || "";
+      setClubId(nextSelected);
+      localStorage.setItem("clubId", nextSelected);
+      setMatches([]);
+      setMatchesErr("");
+      alert("Club deleted.");
+    } catch (e) {
+      alert(`Delete failed: ${e.message}`);
+    }
+  }
+
   const filteredClubs = useMemo(() => {
     const q = clubSearch.trim().toLowerCase();
     if (!q) return clubs;
-    return clubs.filter(c => (c.name || "").toLowerCase().includes(q) || (c.clubId || "").toLowerCase().includes(q));
+    return clubs.filter(
+      (c) =>
+        (c.name || "").toLowerCase().includes(q) ||
+        (c.clubId || "").toLowerCase().includes(q)
+    );
   }, [clubs, clubSearch]);
 
   return (
@@ -142,19 +158,28 @@ export default function ClubDashboard() {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
             <h1 className="text-xl font-bold">
-              {clubs.find(c => c.clubId === clubId)?.name || "Select a club"}
+              {clubs.find((c) => c.clubId === clubId)?.name || "Select a club"}
             </h1>
             {clubId && <p className="text-xs text-gray-500">Club ID: {clubId}</p>}
           </div>
 
           <div className="flex items-center gap-2">
             {clubId && (
-              <Link
-                to={`/CreateMatch?clubId=${encodeURIComponent(clubId)}`}
-                className="px-3 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700"
-              >
-                + New Match
-              </Link>
+              <>
+                <button
+                  onClick={deleteClub}
+                  className="px-3 py-2 rounded-xl border hover:bg-gray-50"
+                  title="Delete club"
+                >
+                  Delete Club
+                </button>
+                <Link
+                  to={`/CreateMatch?clubId=${encodeURIComponent(clubId)}`}
+                  className="px-3 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700"
+                >
+                  + New Match
+                </Link>
+              </>
             )}
             <button
               onClick={() => fetchMatches(clubId)}
@@ -171,7 +196,7 @@ export default function ClubDashboard() {
           <h3 className="text-lg font-semibold">Recent Matches</h3>
           {matchesErr && <p className="mt-2 text-sm text-red-600">Error: {matchesErr}</p>}
 
-          {(!clubId) && (
+          {!clubId && (
             <p className="mt-3 text-sm text-gray-500">Choose a club to view its matches.</p>
           )}
 
@@ -191,10 +216,10 @@ export default function ClubDashboard() {
                 </thead>
                 <tbody>
                   {matches.map((m) => {
-                    const a = m.teams?.A || m.teams?.a || m.teamA || [];
-                    const b = m.teams?.B || m.teams?.b || m.teamB || [];
-                    const scoreA = m.score?.A ?? m.score?.a ?? m.scoreA ?? 0;
-                    const scoreB = m.score?.B ?? m.score?.b ?? m.scoreB ?? 0;
+                    const a = m.teams?.A || m.teamA || [];
+                    const b = m.teams?.B || m.teamB || [];
+                    const scoreA = m.score?.A ?? m.scoreA ?? 0;
+                    const scoreB = m.score?.B ?? m.scoreB ?? 0;
                     return (
                       <tr key={m.matchId} className="border-b hover:bg-gray-50">
                         <td className="py-2 pr-4 whitespace-nowrap">{fmtDate(m.startedAt)}</td>
@@ -202,7 +227,7 @@ export default function ClubDashboard() {
                         <td className="py-2 pr-4 max-w-[180px]"><TeamLabel team={b} /></td>
                         <td className="py-2 pr-4 font-mono">{scoreA} : {scoreB}</td>
                         <td className="py-2 pr-4">{m.bestOf || "-"}</td>
-                        <td className="py-2 pr-4">{m.status || "active"}</td>
+                        <td className="py-2 pr-4">{m.status || "LIVE"}</td>
                         <td className="py-2 pr-4">
                           <div className="flex gap-2">
                             <Link
@@ -212,7 +237,13 @@ export default function ClubDashboard() {
                               Open
                             </Link>
                             <button
-                              onClick={() => navigate(`/CreateMatch?clubId=${encodeURIComponent(clubId)}&from=${encodeURIComponent(m.matchId)}`)}
+                              onClick={() =>
+                                navigate(
+                                  `/CreateMatch?clubId=${encodeURIComponent(
+                                    clubId
+                                  )}&from=${encodeURIComponent(m.matchId)}`
+                                )
+                              }
                               className="px-2 py-1 rounded-lg border hover:bg-gray-100"
                               title="Create a new match for this club"
                             >
@@ -225,7 +256,9 @@ export default function ClubDashboard() {
                   })}
                   {clubId && !loadingMatches && matches.length === 0 && (
                     <tr>
-                      <td colSpan={7} className="py-4 text-gray-500">No matches yet for this club.</td>
+                      <td colSpan={7} className="py-4 text-gray-500">
+                        No matches yet for this club.
+                      </td>
                     </tr>
                   )}
                 </tbody>

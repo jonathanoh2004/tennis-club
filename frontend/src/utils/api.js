@@ -1,80 +1,66 @@
-// frontend/src/utils/api.js
 import { authApi } from "./authClient";
-const BASE = import.meta.env.VITE_API_BASE;
 
-/** Internal helper: fetch with auth + JSON + nicer errors */
-async function authedFetch(path, init = {}) {
-  const token = await authApi.getIdToken().catch(() => "");
-  const headers = new Headers(init.headers || {});
-  if (token) headers.set("Authorization", `Bearer ${token}`);
-  if (!headers.has("Content-Type") && init.method && init.method !== "GET" && !(init.body instanceof FormData)) {
-    headers.set("Content-Type", "application/json");
-  }
-  const res = await fetch(`${BASE}${path}`, { ...init, headers });
+// Prefer env, but fall back to your known dev API so localhost *always* works.
+const DEFAULT_BASE = "https://r9521m884k.execute-api.us-west-2.amazonaws.com/dev";
+const API_BASE = import.meta.env?.VITE_API_BASE || DEFAULT_BASE;
 
-  let data = null;
-  try { data = await res.json(); } catch { /* non-JSON */ }
-
-  if (!res.ok) {
-    const msg = (data && (data.message || data.error)) || `HTTP ${res.status}`;
-    throw new Error(msg);
-  }
-  return data;
+if (!import.meta.env?.VITE_API_BASE) {
+  // Helpful log so you know env wasn't picked up during dev
+  // (Vite only reads .env on startup; ensure file is in /frontend and restart dev server)
+  // eslint-disable-next-line no-console
+  console.warn(
+    "[api] VITE_API_BASE not found; using fallback:",
+    API_BASE
+  );
 }
 
-/* -------- Generic object (used by Profile.jsx) -------- */
+async function authHeaders(extra = {}) {
+  try {
+    const token = await authApi.getIdToken();
+    return token
+      ? { Authorization: `Bearer ${token}`, ...extra }
+      : { ...extra };
+  } catch {
+    return { ...extra };
+  }
+}
+
+async function handle(res) {
+  if (res.status === 204) return null;
+  const text = await res.text().catch(() => "");
+  if (!res.ok) throw new Error(text || `HTTP ${res.status}`);
+  try {
+    return JSON.parse(text);
+  } catch {
+    return text;
+  }
+}
+
 export const api = {
-  get: (path) => authedFetch(path),
-  post: (path, body) =>
-    authedFetch(path, {
+  base: API_BASE,
+
+  async get(path) {
+    const res = await fetch(`${API_BASE}${path}`, {
+      method: "GET",
+      headers: await authHeaders(),
+    });
+    return handle(res);
+  },
+
+  async post(path, body) {
+    const res = await fetch(`${API_BASE}${path}`, {
       method: "POST",
-      body: body ? JSON.stringify(body) : undefined,
-    }),
+      headers: await authHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify(body ?? {}),
+    });
+    return handle(res);
+  },
+
+  async del(path) {
+    const res = await fetch(`${API_BASE}${path}`, {
+      method: "DELETE",
+      headers: await authHeaders(),
+    });
+    return handle(res);
+  },
 };
-
-/* -------- Specific helpers (optional to use elsewhere) -------- */
-
-export async function getMatch(id) {
-  if (!id) throw new Error("match id required");
-  return authedFetch(`/matches/${encodeURIComponent(id)}`);
-}
-
-export async function bumpScore(id, team, delta = 1) {
-  if (!id) throw new Error("match id required");
-  if (!team) throw new Error("team required (A or B)");
-  return authedFetch(`/matches/${encodeURIComponent(id)}/score`, {
-    method: "POST",
-    body: JSON.stringify({ team, which: team, delta }),
-  });
-}
-
-export async function finalizeMatch(id) {
-  if (!id) throw new Error("match id required");
-  return authedFetch(`/matches/${encodeURIComponent(id)}/finalize`, { method: "POST" });
-}
-
-export async function listMatches(clubId) {
-  if (!clubId) throw new Error("clubId required");
-  return authedFetch(`/matches?clubId=${encodeURIComponent(clubId)}`);
-}
-
-export async function getMe() {
-  return authedFetch(`/me`);
-}
-
-export async function updateProfile(displayName) {
-  return authedFetch(`/profile`, {
-    method: "POST",
-    body: JSON.stringify({ displayName }),
-  });
-}
-
-export async function joinClub(clubId) {
-  if (!clubId) throw new Error("clubId required");
-  return authedFetch(`/clubs/${encodeURIComponent(clubId)}/members`, { method: "POST" });
-}
-
-export async function listMembers(clubId) {
-  if (!clubId) throw new Error("clubId required");
-  return authedFetch(`/clubs/${encodeURIComponent(clubId)}/members`);
-}

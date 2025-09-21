@@ -31,6 +31,7 @@ provider:
             - dynamodb:DeleteItem
             - dynamodb:Query
             - dynamodb:Scan
+            - dynamodb:BatchWriteItem   # cascade deletions
           Resource:
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.CLUBS_TABLE}
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.MATCHES_TABLE}
@@ -70,6 +71,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -85,6 +87,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -100,10 +103,30 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
             allowCredentials: false
+
+  deleteClub:
+    handler: handlers/clubs_delete.handler
+    events:
+      - http:
+          path: clubs/{clubId}
+          method: delete
+          cors:
+            origins:
+              - https://tenniscluboh.com
+              - https://www.tenniscluboh.com
+              - http://localhost:5173
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: false
+            methods:
+              - OPTIONS
+              - DELETE
 
   listMatches:
     handler: handlers/matches.list
@@ -115,6 +138,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -130,6 +154,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -145,6 +170,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -160,6 +186,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -176,6 +203,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -191,6 +219,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -207,6 +236,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
@@ -222,6 +252,7 @@ functions:
             origins:
               - https://tenniscluboh.com
               - https://www.tenniscluboh.com
+              - http://localhost:5173
             headers:
               - Content-Type
               - Authorization
